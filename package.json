@@ -1,0 +1,22 @@
+{
+  "name": "foxBot",
+  "version": "1.5.0",
+  "engines": {
+    "node": "8.9.4"
+  },
+  "description": "",
+  "main": "bot.js",
+  "dependencies": {
+    "facebook-chat-api": "^1.4.0",
+	  "ontime": "^0.0.4",
+    "weather-js": "^0.1.0",
+
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node foxbot.js",
+    "test": "node fixbot.js"
+  },
+  "author": "FoxCode",
+  "license": "ISC"
+}

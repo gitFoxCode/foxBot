@@ -562,18 +562,21 @@ login({appState: JSON.parse(fs.readFileSync('appstate.json', 'utf8'))}, (err, ap
 
 
 ontime({
-    cycle: '19:02:00'
+    cycle: '20:00:00'
 }, function (ot) {
 
 weather.find({search: "Kluczewsko", degreeType: "C"}, function(err, resultse) {
 if(err) console.log(err);
 let todayis = resultse[0].current.day;
 let nowTemp = resultse[0].current.temperature;
+let date = new Date();
+let h = date.getHours();
+let m = date.getMinutes();
 
 let groupID = "473427749508360";
 api.sendMessage(`✅ *${todayis}*
 🔴 *Temperatura*: ${nowTemp}°C
- 🕗 *Godzina*: 19:02:00
+ 🕗 *Godzina*: ${h}:${m}
  🌐 *Informacje*: Dawida stara dzis juz dala dupy
  ⚠ *Weekend*: Za 2 dni`, groupID);
                 
