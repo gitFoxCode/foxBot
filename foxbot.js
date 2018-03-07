@@ -562,33 +562,29 @@ login({appState: JSON.parse(fs.readFileSync('appstate.json', 'utf8'))}, (err, ap
 
 
 ontime({
-    cycle: '18:10:00'
+    cycle: '19:02:00'
 }, function (ot) {
-    let groupID = "473427749508360";
 
-    weather.find({search: 'Kluczewsko', degreeType: 'C'}, function(err, result) {
-              if(err) console.log(err);
-              console.log("Wykonene");
-              var cDay = result[0].current.day;
-              var cTemperature = result[0].current.temperature;
-    });
+weather.find({search: "Kluczewsko", degreeType: "C"}, function(err, resultse) {
+if(err) console.log(err);
+let todayis = resultse[0].current.day;
+let nowTemp = resultse[0].current.temperature;
 
-    setTimeout(function(){
-
-    api.sendMessage(`✅ *${cDay}*
-🔴 *Temperatura*: *${cTemperature}* °C
-🕗 *Godzina*: 18:10:20
-🌐 *Informacje*: Dawida stara dzis juz dala dupy
-⚠ *Weekend*: Za *2* dni`, groupID);
-
-    }, 20);
-
-
-
+let groupID = "473427749508360";
+api.sendMessage(`✅ *${todayis}*
+🔴 *Temperatura*: ${nowTemp}°C
+ 🕗 *Godzina*: 19:02:00
+ 🌐 *Informacje*: Dawida stara dzis juz dala dupy
+ ⚠ *Weekend*: Za 2 dni`, groupID);
+                
+});
 
     ot.done();
     return;
 })
+
+
+
 
 
 
