@@ -9,8 +9,7 @@
   "dependencies": {
     "facebook-chat-api": "^1.4.0",
 	  "ontime": "^0.0.4",
-    "weather-js": "^0.1.0",
-
+    "weather-js": "^0.1.0"
   },
   "devDependencies": {},
   "scripts": {
