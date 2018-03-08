@@ -1,5 +1,6 @@
 const login = require("facebook-chat-api"),
 	fs = require('fs'),
+   // Hapi = require('hapi'), // server!
 	ontime = require('ontime'), // onTime
 	weather = require('weather-js'), // Weather info
 	afox = require('./admins.js'),
@@ -9,6 +10,12 @@ const login = require("facebook-chat-api"),
 var useChar = "/";
 var spokoj = true,
 	ai = false;
+
+
+//Hapi.server.connection({
+//    port: process.env.PORT || 3000 
+//});
+
 
 var commands = [ // All commands starts here:
 	{
@@ -568,6 +575,7 @@ ontime({
 weather.find({search: "Kluczewsko", degreeType: "C"}, function(err, resultse) {
 if(err) console.log(err);
 let todayis = resultse[0].current.day;
+let dateis = resultse[0].current.date;
 let nowTemp = resultse[0].current.temperature;
 let date = new Date();
 let h = date.getHours();
@@ -575,6 +583,7 @@ let m = date.getMinutes();
 
 let groupID = "473427749508360";
 api.sendMessage(`✅ *${todayis}*
+✅ *Data*: ${dateis}
 🔴 *Temperatura*: ${nowTemp}°C
  🕗 *Godzina*: ${h}:${m}
  🌐 *Informacje*: Nic ciekawego.`, groupID);
@@ -592,9 +601,9 @@ api.sendMessage(`✅ *${todayis}*
 
 
 
-
+    const port = process.env.PORT || 3000;
 	// Addtons
-	var stopListening = api.listen(function(err, event) {
+	var stopListening = api.listen(port, function(err, event) {
 		if (err){
 			return console.error(err);
 		}
