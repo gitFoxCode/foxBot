@@ -601,9 +601,8 @@ api.sendMessage(`✅ *${todayis}*
 
 
 
-    const port = process.env.PORT || 3000;
 	// Addtons
-	var stopListening = api.listen(port, function(err, event) {
+	var stopListening = api.listen(function(err, event) {
 		if (err){
 			return console.error(err);
 		}
