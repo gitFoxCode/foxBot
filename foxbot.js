@@ -189,7 +189,7 @@ var commands = [ // All commands starts here:
 			 
 			  api.sendMessage("Obecnie jest: " + result[0].current.temperature + "°C", event.threadID);
 
-			  console.log(JSON.stringify(result, null, 2));
+			  //console.log(JSON.stringify(result, null, 2));
 			});
 
     	}

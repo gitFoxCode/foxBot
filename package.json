@@ -5,7 +5,7 @@
     "node": "8.9.4"
   },
   "description": "",
-  "main": "bot.js",
+  "main": "foxbot.js",
   "dependencies": {
     "facebook-chat-api": "^1.4.0",
 	  "ontime": "^0.0.4",
