@@ -16,9 +16,6 @@
     "start": "node foxbot.js",
     "test": "node fixbot.js"
   },
-  "config" : { 
-    "port" : "3000" 
-  },
   "author": "FoxCode",
   "license": "ISC"
 }
