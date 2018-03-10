@@ -370,8 +370,15 @@ var commands = [ // All commands starts here:
         syntax: "[wyrażenie]",
         desc: "Kalkulator",
         func: (api, event, args) => {
-            let mathResult = eval(args);
-            api.sendMessage("Wynik: " + mathResult, event.threadID);
+            try {
+                let mathResult = eval(args);
+                api.sendMessage("Wynik: " + mathResult, event.threadID);
+            } catch (e) {
+                if (e instanceof SyntaxError) {
+                    api.sendMessage("Błąd: " + e.message, event.threadID);
+                }
+            }
+
         }
     },
     {
