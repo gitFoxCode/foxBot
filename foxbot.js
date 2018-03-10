@@ -518,6 +518,20 @@ var commands = [ // All commands starts here:
                 api.sendMessage("Sebastian Włudzik, Sebastian Lis", event.threadID);
         }
     },
+     {
+        cmd: "time", //ToFix TODEVELOP
+        groupAccess: false,
+        transform: false,
+        hidden: false,
+        syntax: "",
+        desc: "Sprawdza czas serwera",
+        func: (api, event, args) => {
+                let date = new Date();
+                let h = date.getHours();
+                let m = date.getMinutes();
+                api.sendMessage("Czas serwera: " + h + ":" + m, event.threadID);
+        }
+    },
     {
         cmd: "emojitest",
         groupAccess: false,
@@ -687,6 +701,10 @@ api.sendMessage(`Test. 15:00`, groupID);
                 let regpatt = /samob[óou]jstwo|samobuj|suicide|zabije si[eę]| zabi[cć] si[eę]/gi;
                 if (regpatt.test(event.body)){
                     api.setMessageReaction(":haha:", event.messageID);
+                }
+                let lovepatt = /dobranoc|kc|kochamc ci[ęe]/gi;
+                if (lovepatt.test(event.body)){
+                    api.setMessageReaction(":love:", event.messageID);
                 }
 
 				if (!spokoj){ // Only for somm [ToDevelop]
