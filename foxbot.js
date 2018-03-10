@@ -684,9 +684,9 @@ api.sendMessage(`Test. 15:00`, groupID);
                     console.log("Wysłano zdjęcie!");
                     break;
                 }
-
-                if (event.body.test(/samob[óou]jstwo|samobuj|suicide|zabije si[eę]| zabi[cć] si[eę]/gi)){
-                    api.setMessageReaction(:haha:, event.messageID);
+                let regpatt = /samob[óou]jstwo|samobuj|suicide|zabije si[eę]| zabi[cć] si[eę]/gi;
+                if (regpatt.test(event.body)){
+                    api.setMessageReaction(":haha:", event.messageID);
                 }
 
 				if (!spokoj){ // Only for somm [ToDevelop]
