@@ -656,28 +656,11 @@ api.sendMessage(`Test. 15:00`, groupID);
 
         switch(event.type) {
 
-             case "MessageImage":
-                  return {
-                    type: "photo",
-                    ID: blob.legacy_attachment_id,
-                    filename: blob.filename,
-                    thumbnailUrl: blob.thumbnail.uri,
-            
-                    previewUrl: blob.preview.uri,
-                    previewWidth: blob.preview.width,
-                    previewHeight: blob.preview.height,
-            
-                    largePreviewUrl: blob.large_preview.uri,
-                    largePreviewWidth: blob.large_preview.width,
-                    largePreviewHeight: blob.large_preview.height,
-            
-                    url: blob.large_preview.uri,
-                    width: blob.original_dimensions.x,
-                    height: blob.original_dimensions.y,
-                  }
-
-
-            
+            case "MessageImage":
+                {
+                    console.log("Wysłano zdjęcie!");
+                    break;
+                }
             case "message":
 				if (!spokoj){ // Only for somm [ToDevelop]
 					if (event.senderID === "100003359877664"){
