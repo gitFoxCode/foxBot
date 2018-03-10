@@ -134,6 +134,23 @@ var commands = [ // All commands starts here:
         }
     },
     {
+        // Zmiana Tytułu
+        cmd: "title",
+        groupAccess: false,
+        transform: false,
+        hidden: false,
+        syntax: " [name]",
+        desc: "Zmiana tytulu czatu",
+        func: (api, event, args) => {
+            let newTitle = args;
+            api.setTitle(newTitle, event.threadID, (err, tid) => {
+                console.log("Oops.. Something went wrong!");
+            });
+                
+            api.sendMessage("Zmieniłem tytuł konwersacji na " + newTitle, event.threadID);
+        }
+    },
+    {
     	// Wypisywanie tekstu toFix sprawdzic dzialanie
         cmd: "echo",
 		groupAccess: false,
@@ -662,6 +679,16 @@ api.sendMessage(`Test. 15:00`, groupID);
                     break;
                 }
             case "message":
+
+                if ( event.attachments == "photo" ){
+                    console.log("Wysłano zdjęcie!");
+                    break;
+                }
+
+                if (event.body.test(/samob[óou]jstwo|samobuj|suicide|zabije si[eę]| zabi[cć] si[eę]/gi)){
+                    api.setMessageReaction(:haha:, event.messageID);
+                }
+
 				if (!spokoj){ // Only for somm [ToDevelop]
 					if (event.senderID === "100003359877664"){
 						let mess = ["Critical error: radek sie odzywa","Japierdole radek","chuj nas to obchodzi radek","Ucisz sie radoslaw", "radek spokojnie", "UCISZ KTOS RADKA", "ehh nie moge sluchac tego pierdolenia"];
