@@ -635,6 +635,8 @@ api.sendMessage(`Test. 15:00`, groupID);
 
 
 
+
+
 	// Addtons
 	var stopListening = api.listen(function(err, event) {
 		if (err){
@@ -648,9 +650,35 @@ api.sendMessage(`Test. 15:00`, groupID);
         });
 
 
-        switch(event.type) {
-            case "message":
 
+
+
+
+        switch(event.type) {
+
+             case "MessageImage":
+                  return {
+                    type: "photo",
+                    ID: blob.legacy_attachment_id,
+                    filename: blob.filename,
+                    thumbnailUrl: blob.thumbnail.uri,
+            
+                    previewUrl: blob.preview.uri,
+                    previewWidth: blob.preview.width,
+                    previewHeight: blob.preview.height,
+            
+                    largePreviewUrl: blob.large_preview.uri,
+                    largePreviewWidth: blob.large_preview.width,
+                    largePreviewHeight: blob.large_preview.height,
+            
+                    url: blob.large_preview.uri,
+                    width: blob.original_dimensions.x,
+                    height: blob.original_dimensions.y,
+                  }
+
+
+            
+            case "message":
 				if (!spokoj){ // Only for somm [ToDevelop]
 					if (event.senderID === "100003359877664"){
 						let mess = ["Critical error: radek sie odzywa","Japierdole radek","chuj nas to obchodzi radek","Ucisz sie radoslaw", "radek spokojnie", "UCISZ KTOS RADKA", "ehh nie moge sluchac tego pierdolenia"];
