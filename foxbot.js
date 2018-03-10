@@ -3,6 +3,7 @@ const login = require("facebook-chat-api"),
    // Hapi = require('hapi'), // server!
 	ontime = require('ontime'), // onTime
 	weather = require('weather-js'), // Weather info
+   // math = require('mathjs'), // Calc
 	afox = require('./admins.js'),
 	version = "1.5.0",
 	botId = "100022605855740"; // BOT ID !IMPORTANT
@@ -370,12 +371,13 @@ var commands = [ // All commands starts here:
         syntax: "[wyrażenie]",
         desc: "Kalkulator",
         func: (api, event, args) => {
+            /// VALIDATE THIS [ TO FIX ] [[D A N G E R]]
             try {
                 let mathResult = eval(args);
                 api.sendMessage("Wynik: " + mathResult, event.threadID);
             } catch (e) {
                 if (e instanceof SyntaxError) {
-                    api.sendMessage("Błąd: " + e.message, event.threadID);
+                    api.sendMessage("*[Błąd]* " + e.message, event.threadID);
                 }
             }
 
@@ -583,7 +585,7 @@ login({appState: JSON.parse(fs.readFileSync('appstate.json', 'utf8'))}, (err, ap
 	if(err){
 		return console.error(err);
 	}
-	//api.setOptions({ listenEvents: true }); // Słuchanie eventów: True
+	api.setOptions({ listenEvents: false }); // Słuchanie eventów: True
 	// api.sendMessage("Pomyślny restart \n Witam ponownie :)", defaultGroupId);
 
 
@@ -611,7 +613,20 @@ api.sendMessage(`✅ *${todayis}*
 
     ot.done();
     return;
-})
+});
+
+
+ontime({
+    cycle: '15:00:00'
+}, function (ot) {
+
+let groupID = "473427749508360";
+api.sendMessage(`Test. 15:00`, groupID);
+
+    ot.done();
+    return;
+});
+
 
 
 
