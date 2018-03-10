@@ -648,11 +648,11 @@ api.sendMessage(`✅ *${todayis}*
 
 
 ontime({
-    cycle: '15:00:00'
+    cycle: '18:40:00'
 }, function (ot) {
 
 let groupID = "473427749508360";
-api.sendMessage(`Test. 15:00`, groupID);
+api.sendMessage(`Test czasu serwera, godzina 18:40`, groupID);
 
     ot.done();
     return;
