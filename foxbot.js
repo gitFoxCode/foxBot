@@ -363,6 +363,18 @@ var commands = [ // All commands starts here:
         }
     },
     {
+        cmd: "calc",
+        groupAccess: false,
+        transform: true,
+        hidden: true,
+        syntax: "[wyrażenie]",
+        desc: "Kalkulator",
+        func: (api, event, args) => {
+            let mathResult = eval(args);
+            api.sendMessage("Wynik: " + mathResult, event.threadID);
+        }
+    },
+    {
 		cmd: "selfkick",
 		groupAccess: false,
 		transform: true,
