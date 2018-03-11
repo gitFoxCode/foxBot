@@ -7,7 +7,7 @@
   "description": "",
   "main": "foxbot.js",
   "dependencies": {
-    "Schmavery/facebook-chat-api": "^1.4.0",
+    "facebook-chat-api": "^1.4.0",
 	  "ontime": "^0.0.4",
     "weather-js": "^2.0.0",
     "mathjs": "^4.0.0"
