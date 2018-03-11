@@ -1,6 +1,5 @@
 const login = require("facebook-chat-api"),
 	fs = require('fs'),
-   // Hapi = require('hapi'), // server!
 	ontime = require('ontime'), // onTime
 	weather = require('weather-js'), // Weather info
    // math = require('mathjs'), // Calc
@@ -11,11 +10,6 @@ const login = require("facebook-chat-api"),
 var useChar = "/";
 var spokoj = true,
 	ai = false;
-
-
-//Hapi.server.connection({
-//    port: process.env.PORT || 3000 
-//});
 
 
 var commands = [ // All commands starts here:
@@ -641,18 +635,6 @@ api.sendMessage(`✅ *${todayis}*
  🌐 *Informacje*: Nic ciekawego.`, groupID);
                 
 });
-
-    ot.done();
-    return;
-});
-
-
-ontime({
-    cycle: '18:40:00'
-}, function (ot) {
-
-let groupID = "473427749508360";
-api.sendMessage(`Test czasu serwera, godzina 18:40`, groupID);
 
     ot.done();
     return;
