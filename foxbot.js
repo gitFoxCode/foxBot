@@ -614,6 +614,10 @@ login({appState: JSON.parse(fs.readFileSync('appstate.json', 'utf8'))}, (err, ap
 	// api.sendMessage("Pomyślny restart \n Witam ponownie :)", defaultGroupId);
 
 
+
+// Group TI: 1404205732928620
+
+
 ontime({
     cycle: '6:50:00'
 }, function (ot) {
