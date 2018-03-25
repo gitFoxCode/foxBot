@@ -691,8 +691,6 @@ let date = new Date();
 let h = date.getHours();
 let m = date.getMinutes();
 
-let todayis = resultse[0].current.day;
-
 switch(todayis) {
     case "Monday":
         todayis = "Poniedziałek";
