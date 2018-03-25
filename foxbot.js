@@ -758,7 +758,10 @@ api.sendMessage(`✅ *${todayis}*
 
 
         switch(event.type) {
+            case "message":
+
                 let regpatt = /samob[óou]jstwo|samobuj|suicide|zabije si[eę]| zabi[cć] si[eę]/gi;
+                // toDo: Add Paterns in object
                 if (regpatt.test(event.body)){
                     api.setMessageReaction(":haha:", event.messageID);
                 }
