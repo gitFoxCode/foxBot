@@ -3,6 +3,7 @@ const login = require("facebook-chat-api"),
 	ontime = require('ontime'), // onTime
 	weather = require('weather-js'), // Weather info
    // math = require('mathjs'), // Calc
+    Feed = require('rss-to-json'), // RSS 
 	afox = require('./admins.js'),
 	version = "1.5.0",
 	botId = "100022605855740"; // BOT ID !IMPORTANT
@@ -24,6 +25,17 @@ var commands = [ // All commands starts here:
  			api.sendMessage("Pomoc (0/10)", event.threadID);
 		}
 	},
+    {
+        cmd: "v",
+        groupAccess: false,
+        transform: true,
+        hidden: false,
+        syntax: " --",
+        desc: "Wersja",
+        func: (api, event, args) => {
+            api.sendMessage("foxBot v "+ version, event.threadID);
+        }
+    },
 	{
 		cmd: "cmdchar",
 		groupAccess: false,
@@ -157,6 +169,54 @@ var commands = [ // All commands starts here:
             
             for(let i = 0; i < arguments.length; i++)
                 api.sendMessage(arguments[i], event.threadID);
+        }
+    },
+    {
+        cmd: "bash",
+        groupAccess: false,
+        transform: false,
+        hidden: false,
+        syntax: "",
+        desc: "Losowy bash",
+        func: (api, event, args) => {
+            Feed.load('http://bash.org.pl/rss/', function(err, rss){
+                let random = Math.floor((Math.random() * 10));
+                let joke1 = rss.items[random].description.replace(/\&lt;/gi, "<"); 
+                let joke2 = joke1.replace(/\&gt;/gi, ">");  
+                let rssJoke = joke2.replace(/\<br \/\>/gi, "<");  
+                console.log(rssJoke);
+                api.sendMessage(rssJoke, event.threadID);
+            });
+        }
+    },
+     {
+        cmd: "news",
+        groupAccess: false,
+        transform: false,
+        hidden: false,
+        syntax: "",
+        desc: "Losowy news",
+        func: (api, event, args) => {
+            Feed.load('http://www.polsatnews.pl/rss/kraj.xml', function(err, rss){
+                let random = Math.floor((Math.random() * 50));
+                api.sendMessage(`*${rss.items[random].title}*`, event.threadID)
+                api.sendMessage(rss.items[random].description, event.threadID);
+            });
+        }
+    },
+    {
+        cmd: "zart",
+        groupAccess: false,
+        transform: false,
+        hidden: false,
+        syntax: "",
+        desc: "Losowy zart",
+        func: (api, event, args) => {
+            Feed.load('http://joemonster.org/backend.php?channel=krotkie', function(err, rss){
+                let random = Math.floor((Math.random() * 95));
+                let joke = rss.items[random].description.replace(/\&quot;/gi, ""); 
+                api.sendMessage(joke, event.threadID);
+            });
         }
     },
     {
@@ -619,7 +679,7 @@ login({appState: JSON.parse(fs.readFileSync('appstate.json', 'utf8'))}, (err, ap
 
 
 ontime({
-    cycle: '6:50:00'
+    cycle: '7:00:00'
 }, function (ot) {
 
 weather.find({search: "Kluczewsko", degreeType: "C"}, function(err, resultse) {
@@ -631,12 +691,40 @@ let date = new Date();
 let h = date.getHours();
 let m = date.getMinutes();
 
+let todayis = resultse[0].current.day;
+
+switch(todayis) {
+    case "Monday":
+        todayis = "Poniedziałek";
+        break;
+    case "Tuesday":
+        todayis = "Wtorek";
+        break;
+    case "Wednesday":
+        todayis = "Środa";
+        break;
+    case "Thursday":
+        todayis = "Czwartek";
+        break;
+    case "Friday":
+        todayis = "Piątek!";
+        break;
+    case "Saturday":
+        todayis = "Sobota!";
+        break;
+    case "Sunday":
+        todayis = "Niedziela!";
+        break;
+    default:
+        console.log("Day error.");
+}
+
 let groupID = "473427749508360";
 api.sendMessage(`✅ *${todayis}*
 ✅ *Data*: ${dateis}
 🔴 *Temperatura*: ${nowTemp}°C
- 🕗 *Godzina*: ${h}:${m}
- 🌐 *Informacje*: Nic ciekawego.`, groupID);
+🕗 *Godzina*: ${h}:${m}
+🐣 *Wiadomość*: Dzień Dobry, miłego dnia! `, groupID);
                 
 });
 
@@ -672,18 +760,6 @@ api.sendMessage(`✅ *${todayis}*
 
 
         switch(event.type) {
-
-            case "MessageImage":
-                {
-                    console.log("Wysłano zdjęcie!");
-                    break;
-                }
-            case "message":
-
-                if ( event.attachments == "photo" ){
-                    console.log("Wysłano zdjęcie!");
-                    break;
-                }
                 let regpatt = /samob[óou]jstwo|samobuj|suicide|zabije si[eę]| zabi[cć] si[eę]/gi;
                 if (regpatt.test(event.body)){
                     api.setMessageReaction(":haha:", event.messageID);
