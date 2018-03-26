@@ -587,21 +587,6 @@ var commands = [ // All commands starts here:
         }
     },
     {
-        cmd: "emojitest",
-        groupAccess: false,
-        transform: false,
-        hidden: false,
-        syntax: "",
-        desc: "Sprawdza liste adminow",
-        func: (api, event, args) => {
-                api.sendMessage(`t 
-                    e
-                    st
-                    \ntest \n
-                    test`, event.threadID);
-        }
-    },
-    {
 		cmd: "muka",
 		groupAccess: false,
 		transform: false,
@@ -629,38 +614,6 @@ var commands = [ // All commands starts here:
 			}
 			api.sendMessage(msg, event.threadID);
 		}
-    },
-    {
-        cmd: "radek",
-		groupAccess: "1404205732928620",
-		transform: false,
-		hidden: false,
-        syntax: "",
-        desc: "Radek",
-        func: (api, event, args) => {
-            var randomnumber = Math.floor(Math.random() * 6) + 1;
-            var msg = {
-                body: "dailyradek:",
-                attachment: fs.createReadStream('./dailyradek/' + randomnumber + '.png')
-            };
-            api.sendMessage(msg, event.threadID);
-        }
-    },
-    {
-        cmd: "rosinski",
-		groupAccess: "1404205732928620",
-		transform: false,
-		hidden: false,
-        syntax: "",
-        desc: "rosinski",
-        func: (api, event, args) => {
-           let randomnumber = Math.floor(Math.random() * 4) + 1;
-           let msg = {
-                body: "dailyrosinski:",
-                attachment: fs.createReadStream('./dailyrosinski/' + randomnumber + '.png')
-           };
-			api.sendMessage(msg, event.threadID);
-        }
     }
 ];
 
@@ -718,10 +671,17 @@ switch(todayis) {
 }
 
 let groupID = "473427749508360";
+let groupID2 = "1404205732928620"; // IT
 api.sendMessage(`✅ *${todayis}*
 ✅ *Data*: ${dateis}
 🔴 *Temperatura*: ${nowTemp}°C
-🕗 *Godzina*: ${h}:${m}
+🕗 *Godzina*: ${h}:0${m}
+🐣 *Wiadomość*: Dzień Dobry, miłego dnia! `, groupID);
+
+api.sendMessage(`✅ *${todayis}*
+✅ *Data*: ${dateis}
+🔴 *Temperatura*: ${nowTemp}°C
+🕗 *Godzina*: ${h}:0${m}
 🐣 *Wiadomość*: Dzień Dobry, miłego dnia! `, groupID);
                 
 });
