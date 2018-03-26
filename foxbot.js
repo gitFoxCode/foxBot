@@ -529,7 +529,7 @@ var commands = [ // All commands starts here:
         desc: "zadymka",
         func: (api, event, args) => {
             let msg = {
-                attachment: fs.createReadStream('./zadymka/zadymka.mp3')
+                attachment: fs.createReadStream('./imgs/it/zadymka.mp3')
             };
             api.sendMessage(msg, event.threadID);
         }
@@ -596,7 +596,7 @@ var commands = [ // All commands starts here:
 		func: (api, event, args) => {
 			let msg = {
 				body: ">:)",
-				attachment: fs.createReadStream(__dirname + '/muka.png')
+				attachment: fs.createReadStream(__dirname + 'imgs/it/muka.png')
 			}
 			api.sendMessage(msg, event.threadID);
 		}
@@ -610,7 +610,7 @@ var commands = [ // All commands starts here:
 		desc: "Emoticon: kappa",
 		func: (api, event, args) => {
 			let msg = {
-				attachment: fs.createReadStream('emoticons/kappa.png')
+				attachment: fs.createReadStream('imgs/it/kappa.png')
 			}
 			api.sendMessage(msg, event.threadID);
 		}
