@@ -682,7 +682,7 @@ api.sendMessage(`✅ *${todayis}*
 ✅ *Data*: ${dateis}
 🔴 *Temperatura*: ${nowTemp}°C
 🕗 *Godzina*: ${h}:0${m}
-🐣 *Wiadomość*: Dzień Dobry, miłego dnia! `, groupID);
+🐣 *Wiadomość*: Dzień Dobry, miłego dnia! `, groupID2);
                 
 });
 
