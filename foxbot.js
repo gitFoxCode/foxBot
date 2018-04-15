@@ -670,13 +670,7 @@ switch(todayis) {
         console.log("Day error.");
 }
 
-let groupID = "473427749508360";
 let groupID2 = "1404205732928620"; // IT
-api.sendMessage(`✅ *${todayis}*
-✅ *Data*: ${dateis}
-🔴 *Temperatura*: ${nowTemp}°C
-🕗 *Godzina*: ${h}:0${m}
-🐣 *Wiadomość*: Dzień Dobry, miłego dnia! `, groupID);
 
 api.sendMessage(`✅ *${todayis}*
 ✅ *Data*: ${dateis}

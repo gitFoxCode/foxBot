@@ -16,7 +16,11 @@
 */selfkick* - Wyrzuca bota
 */moneta* - Wykonuje rzut monetą
 */check* - Podaje ID grupy
+*/v* - Sprawdza wersje bota
 */nick* [nazwa]|[nick] - zmienia pseudonim [nazwa] na [nick] 
 */stop* - Zatrzymuje bota 
 */AI on* - [W BUDOWIE] WŁĄCZENIE SZTUCZNEJ INTELIGENCJI
 */AI off* - [W BUDOWIE] WYŁĄCZENIE SZTUCZNEJ INTELIGENCJI
+
+
+    "facebook-chat-api": "^1.4.0",
