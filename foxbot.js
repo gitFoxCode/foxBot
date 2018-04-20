@@ -459,14 +459,10 @@ var commands = [ // All commands starts here:
         desc: "Kalkulator",
         func: (api, event, args) => {
             /// VALIDATE THIS [ TO FIX ] [[D A N G E R]]
-            try {
-               // let mathResult = eval(args);
-                api.sendMessage("Komenda tymczasowo zablokowana!", event.threadID);
-            } catch (e) {
-                if (e instanceof SyntaxError) {
-                    api.sendMessage("*[Błąd]* " + e.message, event.threadID);
-                }
-            }
+
+    // let mathResult = eval(args);
+     api.sendMessage("Komenda tymczasowo zablokowana!", event.threadID);
+
 
         }
     },
@@ -689,11 +685,11 @@ switch(todayis) {
 let groupID2 = "1404205732928620"; // IT
 let komixxy = "625244260932803";
 
-api.sendMessage(`✅ *${todayis}*
+/*api.sendMessage(`✅ *${todayis}*
 ✅ *Data*: ${dateis}
 🔴 *Temperatura*: ${nowTemp}°C
 🕗 *Godzina*: ${h}:0${m}
-🐣 *Wiadomość*: Dzień Dobry, miłego dnia! `, groupID2);
+🐣 *Wiadomość*: Dzień Dobry, miłego dnia! `, komixxy);*/
                 
 api.sendMessage(`✅ *${todayis}*
 ✅ *Data*: ${dateis}
