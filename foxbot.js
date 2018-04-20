@@ -272,10 +272,26 @@ var commands = [ // All commands starts here:
 		transform: false,
 		hidden: false,
         syntax: "",
-        desc: "Wyswietla losowy numer (0-100)",
+        desc: "Wyswietla losowy numer",
         func: (api, event, args) => {
-              var randnumber = Math.floor(Math.random() * 100) + 1;
-            api.sendMessage("Twoj numer to: " + randnumber, event.threadID);
+            if(args){
+                let randnumber = Math.floor(Math.random() * args) + 1;
+                api.sendMessage("Twoj numer to: " + randnumber, event.threadID);
+            } else{
+                api.sendMessage("Podaj poprawną liczbe z ktorej mam wylosować!", event.threadID);
+            }
+        }
+    },
+        {
+        cmd: "wrozba",
+        groupAccess: false,
+        transform: false,
+        hidden: false,
+        syntax: "",
+        desc: "Przepowiednia",
+        func: (api, event, args) => {
+              let randnumber = Math.floor(Math.random() * 27) + 1;
+            api.sendMessage("Przepowiadam numer: " + randnumber, event.threadID);
         }
     },
     {
@@ -444,8 +460,8 @@ var commands = [ // All commands starts here:
         func: (api, event, args) => {
             /// VALIDATE THIS [ TO FIX ] [[D A N G E R]]
             try {
-                let mathResult = eval(args);
-                api.sendMessage("Wynik: " + mathResult, event.threadID);
+               // let mathResult = eval(args);
+                api.sendMessage("Komenda tymczasowo zablokowana!", event.threadID);
             } catch (e) {
                 if (e instanceof SyntaxError) {
                     api.sendMessage("*[Błąd]* " + e.message, event.threadID);
@@ -671,12 +687,21 @@ switch(todayis) {
 }
 
 let groupID2 = "1404205732928620"; // IT
+let komixxy = "625244260932803";
 
 api.sendMessage(`✅ *${todayis}*
 ✅ *Data*: ${dateis}
 🔴 *Temperatura*: ${nowTemp}°C
 🕗 *Godzina*: ${h}:0${m}
 🐣 *Wiadomość*: Dzień Dobry, miłego dnia! `, groupID2);
+                
+});
+
+api.sendMessage(`✅ *${todayis}*
+✅ *Data*: ${dateis}
+🔴 *Temperatura*: ${nowTemp}°C
+🕗 *Godzina*: ${h}:0${m}
+🐣 *Wiadomość*: Dzień Dobry, miłego dnia! `, komixxy);
                 
 });
 
