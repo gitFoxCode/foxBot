@@ -685,11 +685,11 @@ switch(todayis) {
 let groupID2 = "1404205732928620"; // IT
 let komixxy = "625244260932803";
 
-/*api.sendMessage(`✅ *${todayis}*
+api.sendMessage(`✅ *${todayis}*
 ✅ *Data*: ${dateis}
 🔴 *Temperatura*: ${nowTemp}°C
 🕗 *Godzina*: ${h}:0${m}
-🐣 *Wiadomość*: Dzień Dobry, miłego dnia! `, komixxy);*/
+🐣 *Wiadomość*: Dzień Dobry, miłego dnia! `, komixxy);
                 
 api.sendMessage(`✅ *${todayis}*
 ✅ *Data*: ${dateis}
