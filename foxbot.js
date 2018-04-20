@@ -26,6 +26,49 @@ var commands = [ // All commands starts here:
 		}
 	},
     {
+        cmd: "cmds",
+        groupAccess: false,
+        transform: true,
+        hidden: false,
+        syntax: " --",
+        desc: "Komendy",
+        func: (api, event, args) => {
+            api.sendMessage(`
+----- foxBot -----
+Komendy: 
+*/help* - Jeszcze nic nie robi
+*/cmdchar* [znak] - Zmienia znak '/' na wlasny
+*/bash* - Losowy tekst z basha
+*/zart* - Losowy zart
+*/news* - Losowy news
+*/time* - Wyświetla czas serwera
+*/calc* [wyrażenie] - Kalkulator
+*/color* [kolor] - Zmienia kolor (usuniete przez cukierberka, mozna tylko kolory ktore są dostepne przez messenger)
+*/emoji* [emoji] - Zmienia emoji
+*/echo* [text] - Bot wypisuje text 
+*/add* [userID/uName] - Bot dodaje uzytkownika do grupy
+*/senderid* - Wyswietla Twoje id
+*/temperatura* - pokazuje temperature w C
+*/random* [numer] - Losowa liczba 
+*/wypierdalac* - Usuwa wszystkich z konfy prócz bota i Twórcy
+*/destroy* - Usuwa wszystkich z konfy, usuwa konferencje
+*/msginfo* - Liczba napisanych wiadomości od momentu dodania bota
+*/bot* [nazwa] - Zmienia pseudonim bota
+*/kick* [nick/userID/uName] - Usuwa uzytkownika z konferencji
+*/search* [uName/nick]- Wyszukuje ID uzytkownika 
+*/selfkick* - Wyrzuca bota
+*/moneta* - Wykonuje rzut monetą
+*/check* - Podaje ID grupy
+*/v* - Sprawdza wersje bota
+*/nick* [nazwa]|[nick] - zmienia pseudonim [nazwa] na [nick] 
+*/stop* - Zatrzymuje bota 
+*/AI on* - [W BUDOWIE] WŁĄCZENIE SZTUCZNEJ INTELIGENCJI
+*/AI off* - [W BUDOWIE] WYŁĄCZENIE SZTUCZNEJ INTELIGENCJI
+*/zadymka* - Zadymka.mp3
+*/title* [tytul] - Zmienia tytul konwersacji `, event.threadID);
+        }
+    },
+    {
         cmd: "v",
         groupAccess: false,
         transform: true,
@@ -697,12 +740,18 @@ switch(todayis) {
 
 let groupID2 = "1404205732928620"; // IT
 let komixxy = "625244260932803";
+let own = "473427749508360";
 
 api.sendMessage(`✅ *${todayis}*
 ✅ *Data*: ${dateis}
 🔴 *Temperatura*: ${nowTemp}°C
 🕗 *Godzina*: ${h}:0${m}
 🐣 *Wiadomość*: Dzień Dobry, miłego dnia! `, komixxy);
+
+api.sendMessage(`✅ *${todayis}*
+✅ *Data*: ${dateis}
+🔴 *Temperatura*: ${nowTemp}°C
+🕗 *Godzina*: ${h}:0${m} `, own);
                 
 api.sendMessage(`✅ *${todayis}*
 ✅ *Data*: ${dateis}
