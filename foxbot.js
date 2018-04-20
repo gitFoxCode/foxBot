@@ -460,8 +460,7 @@ var commands = [ // All commands starts here:
         func: (api, event, args) => {
             /// VALIDATE THIS [ TO FIX ] [[D A N G E R]]
             if (args == "process.exit()"){
-                api.sendMessage(`allahuakbar!`+ mathResult, event.threadID);
-                break;
+                api.sendMessage(`UWAGA! \n BOT ZOSTAŁ ZHACKOWANY!!!!! `+ mathResult, event.threadID);
             }
              let mathResult = foxMath.eval(args);
              api.sendMessage(`Wynik: `+ mathResult, event.threadID);
