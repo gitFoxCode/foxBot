@@ -46,6 +46,7 @@ Komendy:
 */color* [kolor] - Zmienia kolor (usuniete przez cukierberka, mozna tylko kolory ktore są dostepne przez messenger)
 */emoji* [emoji] - Zmienia emoji
 */echo* [text] - Bot wypisuje text 
+*/muka* - Muka
 */add* [userID/uName] - Bot dodaje uzytkownika do grupy
 */senderid* - Wyswietla Twoje id
 */temperatura* - pokazuje temperature w C
@@ -430,7 +431,7 @@ Komendy:
                 if(err){
                    return callback(err);
                 }
-             api.sendMessage("Zostało tutaj wyslane " + info.messageCount + " wiadomości.", event.threadID);     
+             api.sendMessage("Od mojego dodania zostało tutaj wyslane " + info.messageCount + " wiadomości.", event.threadID);     
             }); 
         }
     },
@@ -503,12 +504,18 @@ Komendy:
         func: (api, event, args) => {
             /// VALIDATE THIS [ TO FIX ] [[D A N G E R]]
             try {
-                let parser = foxMath.parser();
-                if (args == "process.exit()"){
-                    api.sendMessage(`UWAGA! \n BOT ZOSTAŁ ZHACKOWANY!!!!! `+ mathResult, event.threadID);
-                }
-                 let mathResult = parser.eval(args);
-                 api.sendMessage(`Wynik: `+ mathResult, event.threadID);
+                
+                if(args.includes("bignumber") ){
+                    api.sendMessage(`Zbyt wielkie liczby, mój panie.`, event.threadID);
+                } else{
+                    let parser = foxMath.parser();
+                    if (args == "process.exit()"){
+                        api.sendMessage(`UWAGA! \n BOT ZOSTAŁ ZHACKOWANY!!!!! `+ mathResult, event.threadID);
+                    }
+                    let mathResult = parser.eval(args);
+                    api.sendMessage(`Wynik: `+ mathResult, event.threadID);
+
+                    }
 
              } catch (e) {
                  if (e instanceof SyntaxError) {
@@ -664,7 +671,7 @@ Komendy:
 		func: (api, event, args) => {
 			let msg = {
 				body: ">:)",
-				attachment: fs.createReadStream(__dirname + 'imgs/it/muka.png')
+				attachment: fs.createReadStream('imgs/it/muka.png')
 			}
 			api.sendMessage(msg, event.threadID);
 		}
