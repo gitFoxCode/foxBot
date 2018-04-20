@@ -460,10 +460,11 @@ var commands = [ // All commands starts here:
         func: (api, event, args) => {
             /// VALIDATE THIS [ TO FIX ] [[D A N G E R]]
             try {
+                let parser = foxMath.parser();
                 if (args == "process.exit()"){
                     api.sendMessage(`UWAGA! \n BOT ZOSTAŁ ZHACKOWANY!!!!! `+ mathResult, event.threadID);
                 }
-                 let mathResult = foxMath.eval(args);
+                 let mathResult = parser.eval(args);
                  api.sendMessage(`Wynik: `+ mathResult, event.threadID);
 
              } catch (e) {
