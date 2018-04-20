@@ -11,7 +11,7 @@
 	  "ontime": "^0.0.4",
     "rss-to-json": "^1.0.4",
     "weather-js": "^2.0.0",
-    "mathjs": "^4.0.0"
+    "mathjs": "^4.1.2"
   },
   "devDependencies": {},
   "scripts": {

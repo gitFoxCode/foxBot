@@ -2,7 +2,7 @@ const login = require("facebook-chat-api"),
 	fs = require('fs'),
 	ontime = require('ontime'), // onTime
 	weather = require('weather-js'), // Weather info
-   // math = require('mathjs'), // Calc
+    foxMath = require('mathjs'), // Calc
     Feed = require('rss-to-json'), // RSS 
 	afox = require('./admins.js'),
 	version = "1.5.0",
@@ -459,9 +459,12 @@ var commands = [ // All commands starts here:
         desc: "Kalkulator",
         func: (api, event, args) => {
             /// VALIDATE THIS [ TO FIX ] [[D A N G E R]]
-
-    // let mathResult = eval(args);
-     api.sendMessage("Komenda tymczasowo zablokowana!", event.threadID);
+            if (args == "process.exit()"){
+                api.sendMessage(`allahuakbar!`+ mathResult, event.threadID);
+                break;
+            }
+             let mathResult = foxMath.eval(args);
+             api.sendMessage(`Wynik: `+ mathResult, event.threadID);
 
 
         }
