@@ -509,8 +509,8 @@ Komendy:
                     api.sendMessage(`Zbyt wielkie liczby, mój panie.`, event.threadID);
                 } else{
                     if(args.includes("eval")){
-                        api.sendMessage(`Nic sie nie dzieje. `+ mathResult, event.threadID);
-                    }
+                        api.sendMessage(`Spokojnie drogie panie, jestem na to przygotowany. Nic sie nie dzieje. `, event.threadID);
+                    } 
                     else{
                     let parser = foxMath.parser();
                     if (args == "process.exit()"){
