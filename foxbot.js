@@ -688,7 +688,7 @@ Komendy:
 		func: (api, event, args) => {
 			let msg = {
 				body: ">:)",
-                attachment: fs.createReadStream('./imgs/it/muka.png')
+                attachment: fs.createReadStream('./imgs/it/muka.jpg')
 			}
 			api.sendMessage(msg, event.threadID);
 		}
