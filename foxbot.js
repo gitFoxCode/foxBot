@@ -466,14 +466,21 @@ Komendy:
 	                    return callback(err);
 	                }
 
-	                let idtoban = data[0].userID;
-	                if (idtoban === "100001810636246") {
-	                    api.removeUserFromGroup(event.senderID, event.threadID);
-	                } else {
-                        console.log("Wyrzucam uzytkownika: ");
-                        console.log(idtoban);
-	                    api.removeUserFromGroup(idtoban, event.threadID);    
-	                }
+
+                        try { 
+                            let idtoban = data[0].userID;
+                            if (idtoban === "100001810636246") {
+                                api.removeUserFromGroup(event.senderID, event.threadID);
+                            } else {
+                                console.log("Wyrzucam uzytkownika: ");
+                                console.log(idtoban);
+                                api.removeUserFromGroup(idtoban, event.threadID);    
+                            }
+                        }
+                        catch(err) {
+                            api.sendMessage("Wystąpił bląd: " + err, event.threadID);
+                            console.log("Opis bledu: "+err.errorDescription);
+                        }
 	            });
         	}
         }
