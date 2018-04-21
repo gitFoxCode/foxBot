@@ -474,7 +474,12 @@ Komendy:
                             } else {
                                 console.log("Wyrzucam uzytkownika: ");
                                 console.log(idtoban);
-                                api.removeUserFromGroup(idtoban, event.threadID);    
+                                try{
+                                    api.removeUserFromGroup(idtoban, event.threadID); 
+                                }  catch (err){
+                                    api.sendMessage("Wystąpił bląd: " + err, event.threadID);
+                                    console.log("Opis bledu: "+err.errorDescription);
+                                }
                             }
                         }
                         catch(err) {
