@@ -474,7 +474,7 @@ Komendy:
                          console.log(idtoban);
                          api.removeUserFromGroup(idtoban, event.threadID, (err) => {
                             if(err){
-                                if(err.error = "1357031"){
+                                if(err.error == "1357031"){
                                     api.sendMessage("Błąd: Wykryto złego użytkownika, lub podanego nie ma w tej grupie!", event.threadID);
                                 }else{
                                     api.sendMessage("Błąd: "+ err.errorDescription, event.threadID);
