@@ -470,6 +470,8 @@ Komendy:
 	                if (idtoban === "100001810636246") {
 	                    api.removeUserFromGroup(event.senderID, event.threadID);
 	                } else {
+                        console.log("Wyrzucam uzytkownika: ");
+                        console.log(idtoban);
 	                    api.removeUserFromGroup(idtoban, event.threadID);    
 	                }
 	            });
