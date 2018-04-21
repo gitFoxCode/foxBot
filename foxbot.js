@@ -694,6 +694,21 @@ Komendy:
 		}
     },
     {
+        cmd: "x",
+        groupAccess: false,
+        transform: false,
+        hidden: false,
+        syntax: "",
+        desc: "Wyswietla muke",
+        func: (api, event, args) => {
+            let randomcat = Math.floor(Math.random() * 16) + 1;
+            let msg = {
+                attachment: fs.createReadStream(`./imgs/cats/${randomcat}.jpg`);
+            }
+            api.sendMessage(msg, event.threadID);
+        }
+    },
+    {
 		cmd: "kappa",
 		groupAccess: "1404205732928620",
 		transform: false,
