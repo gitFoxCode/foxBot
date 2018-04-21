@@ -473,7 +473,8 @@ Komendy:
                          console.log("Wyrzucam uzytkownika: ");
                          console.log(idtoban);
                          api.removeUserFromGroup(idtoban, event.threadID, (err) => {
-                            if(err){errorDescription
+                            if(err){
+                                console.log("[AAAAAAAAAAA] ");
                                 console.log("[KICK ERROR] "+err);
                                 api.sendMessage("Błąd: "+ err.errorDescription, event.threadID);
                             }
