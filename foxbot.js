@@ -511,7 +511,7 @@ Komendy:
                     if(args.includes("eval")){
                         api.sendMessage(`Nic sie nie dzieje. `+ mathResult, event.threadID);
                     }
-                }else{
+                    else{
                     let parser = foxMath.parser();
                     if (args == "process.exit()"){
                         api.sendMessage(`UWAGA! \n BOT ZOSTAŁ ZHACKOWANY!!!!! `+ mathResult, event.threadID);
@@ -520,6 +520,7 @@ Komendy:
                     api.sendMessage(`Wynik: `+ mathResult, event.threadID);
 
                     }
+                }
 
              } catch (e) {
                  if (e instanceof SyntaxError) {
