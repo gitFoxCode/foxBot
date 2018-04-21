@@ -703,7 +703,7 @@ Komendy:
         func: (api, event, args) => {
             let randomcat = Math.floor(Math.random() * 16) + 1;
             let msg = {
-                attachment: fs.createReadStream(`./imgs/cats/${randomcat}.jpg`);
+                attachment: fs.createReadStream(`./imgs/cats/${randomcat}.jpg`)
             }
             api.sendMessage(msg, event.threadID);
         }
