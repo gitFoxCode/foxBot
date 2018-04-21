@@ -505,9 +505,13 @@ Komendy:
             /// VALIDATE THIS [ TO FIX ] [[D A N G E R]]
             try {
                 
-                if(args.includes("bignumber") ){
+                if(args.includes("bignumber") || args.includes("big") ){
                     api.sendMessage(`Zbyt wielkie liczby, mój panie.`, event.threadID);
                 } else{
+                    if(args.includes("eval")){
+                        api.sendMessage(`Nic sie nie dzieje. `+ mathResult, event.threadID);
+                    }
+                }else{
                     let parser = foxMath.parser();
                     if (args == "process.exit()"){
                         api.sendMessage(`UWAGA! \n BOT ZOSTAŁ ZHACKOWANY!!!!! `+ mathResult, event.threadID);
