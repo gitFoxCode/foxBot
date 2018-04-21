@@ -14,7 +14,7 @@ var spokoj = true,
 
 /* SETTINGS */
 
-math.import({
+foxMath.import({
   'import':     function () { throw new Error('Function import is disabled') },
   'createUnit': function () { throw new Error('Function createUnit is disabled') },
   'simplify':   function () { throw new Error('Function simplify is disabled') },
