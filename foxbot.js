@@ -520,7 +520,7 @@ Komendy:
                 if(args.includes("bignumber") || args.includes("big") ){
                     api.sendMessage(`Zbyt wielkie liczby, mój panie.`, event.threadID);
                 } else{
-                    if(args.includes("eval")){
+                    if(args.includes("eval") || args.includes("concat") || args.includes("compile") || args.includes("()")){
                         api.sendMessage(`Spokojnie drogie panie, jestem na to przygotowany. Nic sie nie dzieje. `, event.threadID);
                     } 
                     else{
