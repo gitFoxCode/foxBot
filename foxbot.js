@@ -12,6 +12,16 @@ var useChar = "/";
 var spokoj = true,
 	ai = false;
 
+/* SETTINGS */
+
+math.import({
+  'import':     function () { throw new Error('Function import is disabled') },
+  'createUnit': function () { throw new Error('Function createUnit is disabled') },
+  'simplify':   function () { throw new Error('Function simplify is disabled') },
+  'derivative': function () { throw new Error('Function derivative is disabled') }
+}, {override: true});
+
+/*          */
 
 var commands = [ // All commands starts here:
 	{
