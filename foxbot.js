@@ -709,11 +709,41 @@ Komendy:
         transform: false,
         hidden: false,
         syntax: "",
-        desc: "Wyswietla muke",
+        desc: "x",
         func: (api, event, args) => {
-            let randomcat = Math.floor(Math.random() * 16) + 1;
+            let randomcat = Math.floor(Math.random() * 44) + 1;
             let msg = {
                 attachment: fs.createReadStream(`./imgs/cats/${randomcat}.jpg`)
+            }
+            api.sendMessage(msg, event.threadID);
+        }
+    },
+    {
+        cmd: "s",
+        groupAccess: false,
+        transform: false,
+        hidden: false,
+        syntax: "",
+        desc: "s",
+        func: (api, event, args) => {
+            let randomnr = Math.floor(Math.random() * 34) + 1;
+            let msg = {
+                attachment: fs.createReadStream(`./imgs/s/${randomnr}.jpg`)
+            }
+            api.sendMessage(msg, event.threadID);
+        }
+    },
+    {
+        cmd: "w",
+        groupAccess: false,
+        transform: false,
+        hidden: false,
+        syntax: "",
+        desc: "w",
+        func: (api, event, args) => {
+            let randomnr = Math.floor(Math.random() * 3) + 1;
+            let msg = {
+                attachment: fs.createReadStream(`./imgs/w/${randomnr}.jpg`)
             }
             api.sendMessage(msg, event.threadID);
         }
