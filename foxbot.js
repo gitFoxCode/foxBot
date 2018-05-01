@@ -5,6 +5,7 @@ const login = require("facebook-chat-api"),
     foxMath = require('mathjs'), // Calc
     Feed = require('rss-to-json'), // RSS 
 	afox = require('./admins.js'),
+    mfox = require('./hello.js'),
 	version = "1.5.0",
 	botId = "100022605855740"; // BOT ID !IMPORTANT
 
@@ -335,6 +336,17 @@ Komendy:
                 api.sendMessage("Podaj poprawną liczbe z ktorej mam wylosować!", event.threadID);
             }
         }
+    },
+    {
+        cmd: "testuje",
+        groupAccess: false,
+        transform: false,
+        hidden: false,
+        syntax: "",
+        desc: "Wyswietla losowy numer",
+        func: (api, event, args) => {
+            let randnumber = Math.floor(Math.random() * mfox.helloList.length);
+            api.sendMessage(mfox.helloList[randnumber], event.threadID);
     },
         {
         cmd: "wrozba",
