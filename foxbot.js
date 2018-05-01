@@ -833,23 +833,25 @@ switch(todayis) {
 let groupID2 = "1404205732928620"; // IT
 let komixxy = "625244260932803";
 let own = "473427749508360";
+let todayRandNumber = Math.floor(Math.random() * mfox.helloList.length);
 
 api.sendMessage(`✅ *${todayis}*
 ✅ *Data*: ${dateis}
 🔴 *Temperatura*: ${nowTemp}°C
 🕗 *Godzina*: ${h}:0${m}
-🐣 *Wiadomość*: Dzień Dobry, miłego dnia! `, komixxy);
+🐣 ${mfox.helloList[randnumber]} <3`, komixxy);
 
 api.sendMessage(`✅ *${todayis}*
 ✅ *Data*: ${dateis}
 🔴 *Temperatura*: ${nowTemp}°C
-🕗 *Godzina*: ${h}:0${m} `, own);
+🕗 *Godzina*: ${h}:0${m} 
+🐣 ${mfox.helloList[randnumber]} <3`, own);
                 
 api.sendMessage(`✅ *${todayis}*
 ✅ *Data*: ${dateis}
 🔴 *Temperatura*: ${nowTemp}°C
 🕗 *Godzina*: ${h}:0${m}
-🐣 *Wiadomość*: Dzień Dobry, miłego dnia! `, groupID2);
+🐣 ${mfox.helloList[randnumber]} <3`, groupID2);
                 
 });
 
