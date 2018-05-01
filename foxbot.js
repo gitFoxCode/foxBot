@@ -347,6 +347,7 @@ Komendy:
         func: (api, event, args) => {
             let randnumber = Math.floor(Math.random() * mfox.helloList.length);
             api.sendMessage(mfox.helloList[randnumber], event.threadID);
+        }
     },
         {
         cmd: "wrozba",
@@ -723,7 +724,7 @@ Komendy:
         syntax: "",
         desc: "x",
         func: (api, event, args) => {
-            let randomcat = Math.floor(Math.random() * 44) + 1;
+            let randomcat = Math.floor(Math.random() * 47) + 1;
             let msg = {
                 attachment: fs.createReadStream(`./imgs/cats/${randomcat}.jpg`)
             }
