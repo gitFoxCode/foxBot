@@ -127,20 +127,6 @@ Komendy:
         }
     },
     {
-		// toFix : Sprawdzić na czym polega (usunieta jedna linijka kodu)
-		cmd: "colortest",
-		groupAccess: false,
-		transform: false,
-		hidden: false,
-		syntax: " [--parameter]",
-		desc: "Komenda do testowania",
-		func: (api, event, args) => {
-			    api.changeThreadColor(args, event.threadID, (err) => {
-			        if(err) return console.error(err);
-			    });
-        }
-    },
-    {
     	// Zmiana koloru czatu
         cmd: "color",
 		groupAccess: false,
@@ -158,17 +144,21 @@ Komendy:
             
             if(color.length == 6)
             {
-                api.changeThreadColor(color, event.threadID, (err) => {
-                    if (err)
-                    {
-                        api.sendMessage("Niepoprawne kolory!", event.threadID);
-
-                        return console.error(err);   
-                    }
-                    else{
-                     api.sendMessage("Kolory zmienione.",event.threadID);
-                    }
-                });    
+                try{
+                      api.changeThreadColor(color, event.threadID, (err) => {
+                        if (err)
+                          {
+                            api.sendMessage("Niepoprawne kolory!", event.threadID);
+                             return console.error(err);   
+                         }
+                          else{
+                            api.sendMessage("Kolory zmienione.",event.threadID);
+                          }
+                     });    
+                } catch(e){
+                    console.log("Color error: " + e);
+                }
+               
             }
             else{
                 api.sendMessage("Źle wpisałeś kolory mistrzu", event.threadID);
@@ -839,19 +829,19 @@ api.sendMessage(`✅ *${todayis}*
 ✅ *Data*: ${dateis}
 🔴 *Temperatura*: ${nowTemp}°C
 🕗 *Godzina*: ${h}:0${m}
-🐣 ${mfox.helloList[randnumber]} <3`, komixxy);
+🐣 ${mfox.helloList[todayRandNumber]} <3`, komixxy);
 
 api.sendMessage(`✅ *${todayis}*
 ✅ *Data*: ${dateis}
 🔴 *Temperatura*: ${nowTemp}°C
 🕗 *Godzina*: ${h}:0${m} 
-🐣 ${mfox.helloList[randnumber]} <3`, own);
+🐣 ${mfox.helloList[todayRandNumber]} <3`, own);
                 
 api.sendMessage(`✅ *${todayis}*
 ✅ *Data*: ${dateis}
 🔴 *Temperatura*: ${nowTemp}°C
 🕗 *Godzina*: ${h}:0${m}
-🐣 ${mfox.helloList[randnumber]} <3`, groupID2);
+🐣 ${mfox.helloList[todayRandNumber]} <3`, groupID2);
                 
 });
 
