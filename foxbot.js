@@ -798,7 +798,7 @@ Obecnie w lobby: *${vsPLAYERS.length}*`, event.threadID);
 W walce bierze udział *${vsPLAYERS.length}* graczy!
 Walka się rozpoczeła! Za sekunde ujawni się zwycięzca!`, event.threadID);
                     setTimeout(() => {
-                        let winnerID = Math.floor((Math.random() * vsPLAYERS.length) +1);
+                        let winnerID = Math.floor((Math.random() * vsPLAYERS.length));
                         console.log("Winner random nr: "+ winnerID);
                         console.log("Winner id: "+ vsPLAYERS[winnerID]);
 
