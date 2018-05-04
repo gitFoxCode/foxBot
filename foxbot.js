@@ -9,6 +9,17 @@ const login = require("facebook-chat-api"),
 	version = "1.5.0",
 	botId = "100022605855740"; // BOT ID !IMPORTANT
 
+
+/*    GAMES SETTINGS   */
+
+/*        VERSUS       */
+
+    var vsPLAYERS = [];
+
+/* - - - - - - - - - - */
+
+/*                     */
+
 var useChar = "/";
 var spokoj = true,
 	ai = false;
@@ -707,6 +718,21 @@ Komendy:
 		}
     },
     {
+        cmd: "info",
+        groupAccess: false,
+        transform: false,
+        hidden: false,
+        syntax: "",
+        desc: "Infomacje o Tobie",
+        func: (api, event, args) => {
+           api.getUserInfo(event.senderID, (err, ret) =>{
+                let name = ret.firstName;
+                let surname = ret.vanity;
+                let nickk = ret.name;
+            }
+            api.sendMessage(`Imie: ${name}, Nazwisko: ${surname}, Name: ${nickk}`, event.threadID);
+    },
+    {
         cmd: "x",
         groupAccess: false,
         transform: false,
@@ -750,6 +776,41 @@ Komendy:
             }
             api.sendMessage(msg, event.threadID);
         }
+    },
+    {
+        cmd: "walcz",
+        groupAccess: false,
+        transform: false,
+        hidden: false,
+        syntax: "",
+        desc: "s",
+        func: (api, event, args) => {
+            /* game */
+            if(args){
+                if(args == "info"){
+                    api.sendMessage(`⚔️ *RANDOM FIGHT* ⚔️
+Obecnie w lobby: *${vsPLAYERS.length}*`, event.threadID);
+                }
+                if(args == "start"){
+                    if(vsPLAYERS.length >= 2){
+ api.sendMessage(`⚔️ *RANDOM FIGHT* ⚔️
+W walce bierze udział *${vsPLAYERS.length}* graczy!`, event.threadID);
+                    setTimeout(() => 
+                        let winnerID = Math.floor((Math.random() * vsPLAYERS.length) +1);
+
+                        api.sendMessage(`⚔️ *RANDOM FIGHT* ⚔️
+Wygrał *${vsWINNER}*`, event.threadID); , 1000);
+                    }else{
+ api.sendMessage(`⚔️ *RANDOM FIGHT* ⚔️
+Graczy jest zbyt mało! (minimum *2* osoby) 
+Obecnie: *${vsPLAYERS}*`, event.threadID); 
+                    }
+                }
+
+            } else{
+                api.sendMessage("*ZŁA KOMENDA*", event.threadID);
+            }
+
     },
     {
 		cmd: "kappa",
