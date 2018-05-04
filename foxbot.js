@@ -795,11 +795,13 @@ Obecnie w lobby: *${vsPLAYERS.length}*`, event.threadID);
                     if(vsPLAYERS.length >= 2){
  api.sendMessage(`⚔️ *RANDOM FIGHT* ⚔️
 W walce bierze udział *${vsPLAYERS.length}* graczy!`, event.threadID);
-                    setTimeout(() => 
+                    setTimeout(() => {
                         let winnerID = Math.floor((Math.random() * vsPLAYERS.length) +1);
 
                         api.sendMessage(`⚔️ *RANDOM FIGHT* ⚔️
-Wygrał *${vsWINNER}*`, event.threadID); , 1000);
+Wygrał *${vsWINNER}*`, event.threadID);
+                    } , 1000);
+
                     }else{
  api.sendMessage(`⚔️ *RANDOM FIGHT* ⚔️
 Graczy jest zbyt mało! (minimum *2* osoby) 
