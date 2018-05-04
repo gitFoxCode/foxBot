@@ -729,7 +729,7 @@ Komendy:
                 let name = ret.firstName;
                 let surname = ret.vanity;
                 let nickk = ret.name;
-            }
+            });
             api.sendMessage(`Imie: ${name}, Nazwisko: ${surname}, Name: ${nickk}`, event.threadID);
     },
     {
