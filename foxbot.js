@@ -19,6 +19,12 @@ const login = require("facebook-chat-api"),
     var vsWINNER = "";
 
 /* - - - - - - - - - - */
+/*      WISIELEC       */
+
+
+
+/* - - - - - - - - - - */
+
 
 /*                     */
 
