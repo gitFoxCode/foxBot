@@ -15,6 +15,7 @@ const login = require("facebook-chat-api"),
 /*        VERSUS       */
 
     var vsPLAYERS = [];
+    var vsGROUP = "";
 
 /* - - - - - - - - - - */
 
@@ -726,10 +727,9 @@ Komendy:
         desc: "Infomacje o Tobie",
         func: (api, event, args) => {
            api.getUserInfo(event.senderID, (err, ret) =>{
-                let name = ret.firstName;
-                let surname = ret.vanity;
-                let nickk = ret.name;
-                api.sendMessage(`Imie: ${name}, Nazwisko: ${surname}, Name: ${nickk}`, event.threadID);
+                for(let prop in ret) {
+                        api.sendMessage(ret[prop].name , event.threadID);
+                }
             });
         }
     },
@@ -795,23 +795,63 @@ Obecnie w lobby: *${vsPLAYERS.length}*`, event.threadID);
                 if(args == "start"){
                     if(vsPLAYERS.length >= 2){
  api.sendMessage(`⚔️ *RANDOM FIGHT* ⚔️
-W walce bierze udział *${vsPLAYERS.length}* graczy!`, event.threadID);
+W walce bierze udział *${vsPLAYERS.length}* graczy!
+Walka się rozpoczeła! Za sekunde ujawni się zwycięzca!`, event.threadID);
                     setTimeout(() => {
                         let winnerID = Math.floor((Math.random() * vsPLAYERS.length) +1);
+                        console.log("Winner random nr: "+ winnerID);
+                        console.log("Winner id: "+ vsPLAYERS[winnerID]);
 
-                        api.sendMessage(`⚔️ *RANDOM FIGHT* ⚔️
+                       api.getUserInfo(vsPLAYERS[winnerID], (err, ret) =>{
+                            for(let prop in ret) {
+                                console.log("Wygral: " + ret[prop].name );
+                                var vsWINNER = ret[prop].name;
+                            api.sendMessage(`⚔️ *RANDOM FIGHT* ⚔️
 Wygrał *${vsWINNER}*`, event.threadID);
+                            }
+                       vsPLAYERS = [];
+                       winnerID = "";
+                       vsWINNER = "";
+                       vsGROUP = "";
+
+
+                        });
+
+
+
                     } , 1000);
 
                     }else{
  api.sendMessage(`⚔️ *RANDOM FIGHT* ⚔️
 Graczy jest zbyt mało! (minimum *2* osoby) 
-Obecnie: *${vsPLAYERS}*`, event.threadID); 
+Obecnie: *${vsPLAYERS.length}*`, event.threadID); 
                     }
+                } else if(args == "help"){
+                 api.sendMessage(`⚔️ *RANDOM FIGHT* ⚔️
+Komendy: 
+*/walcz info* - Sprawdza ile osób jest w lobby
+*/walcz start* - Startujesz walke
+*/walcz* - Dołączasz do lobby
+*/walcz help* - Dostępne komendy`, event.threadID);
                 }
 
             } else{
-                api.sendMessage("*ZŁA KOMENDA*", event.threadID);
+                 if(vsPLAYERS.includes(event.senderID)){
+                 api.sendMessage(`⚔️ *RANDOM FIGHT* ⚔️
+Jesteś już w lobby!`, event.threadID);
+                 } else{
+                    if(vsGROUP){
+                        if(vsGROUP != event.threadID){
+                         api.sendMessage(`⚔️ *RANDOM FIGHT* ⚔️
+Walka już trwa na innej grupie!`, event.threadID);
+                        }
+                    } else{
+                        vsGROUP = event.threadID;
+                    }
+                 api.sendMessage(`⚔️ *RANDOM FIGHT* ⚔️
+Dołączyłeś do Random Fight! ( *${vsPLAYERS.length+1}* / 2 )`, event.threadID);
+                 vsPLAYERS.push(event.senderID);
+                 }
             }
         }
 

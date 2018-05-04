@@ -7,11 +7,11 @@
   "description": "",
   "main": "foxbot.js",
   "dependencies": {
-    "facebook-chat-api": "^1.5.0",
-	  "ontime": "^0.0.4",
+    "facebook-chat-api": "^1.5.1",
+    "mathjs": "^4.2.1",
+    "ontime": "0.0.4",
     "rss-to-json": "^1.0.4",
-    "weather-js": "^2.0.0",
-    "mathjs": "^4.1.2"
+    "weather-js": "^2.0.0"
   },
   "devDependencies": {},
   "scripts": {
