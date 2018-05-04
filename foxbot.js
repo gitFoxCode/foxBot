@@ -705,10 +705,10 @@ Komendy:
                     let Dbar = '|'.repeat(D/10);
                     api.sendMessage(`[ *MILIONERZY* ]
 Głosy publiczności:
-*A* [*${Abar.padEnd(10)}*]  ${A}% 
-*B* [*${Bbar.padEnd(10)}*]  ${B}% 
-*C* [*${Cbar.padEnd(10)}*]  ${C}% 
-*D* [*${Dbar.padEnd(10)}*]  ${D}%`, event.threadID); 
+*A* *[${Abar.padEnd(10)}]*  ${A}% 
+*B* *[${Bbar.padEnd(10)}]*  ${B}% 
+*C* *[${Cbar.padEnd(10)}]*  ${C}% 
+*D* *[${Dbar.padEnd(10)}]*  ${D}%`, event.threadID); 
                 }        
         }
     },
