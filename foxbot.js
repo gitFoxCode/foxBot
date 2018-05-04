@@ -797,15 +797,7 @@ Obecnie w lobby: *${vsPLAYERS.length}*`, event.threadID);
  api.sendMessage(`⚔️ *RANDOM FIGHT* ⚔️
 W walce bierze udział *${vsPLAYERS.length}* graczy!
 Walka się rozpoczeła! Za sekunde ujawni się zwycięzca!`, event.threadID);
-                    if(vsWINNER !== ""){
- api.sendMessage(`⚔️ *RANDOM FIGHT* ⚔️
-Hola hola... To sie dzieje za szybko! [RESTART]`, event.threadID);
-vsPLAYERS = [];
-winnerID = "";
-vsWINNER = "";
-vsGROUP = "";
- return false;
-                    }
+
                     setTimeout(() => {
                         let winnerID = Math.floor((Math.random() * vsPLAYERS.length));
                         console.log("Winner random nr: "+ winnerID);
