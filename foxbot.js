@@ -686,6 +686,32 @@ Komendy:
         }
     },
     {
+        cmd: "mi",
+        groupAccess: "",
+        transform: false,
+        hidden: false,
+        syntax: "",
+        desc: "Milionerzy!",
+        func: (api, event, args) => {
+                if(args == "publicznosc"){
+                    let A = Math.floor((Math.random() * 100));
+                    let B = Math.floor((Math.random() * (100 - A)));
+                    let C = Math.floor((Math.random() * (100 - A - B)));
+                    let D = 100 - A - B - C;
+
+                    let Abar = '|'.repeat(A/10);
+                    let Bbar = '|'.repeat(B/10);
+                    let Cbar = '|'.repeat(C/10);
+                    let Dbar = '|'.repeat(D/10);
+                    api.sendMessage(`Publicznosc zaglosowala!:
+A [${Abar.padEnd(10)}]  ${A}% 
+B [${Bbar.padEnd(10)}]  ${B}% 
+C [${Cbar.padEnd(10)}]  ${C}% 
+D [${Dbar.padEnd(10)}]  ${D}%`, event.threadID); 
+                }        
+        }
+    },
+    {
         cmd: "adminList", //ToFix TODEVELOP
 		groupAccess: false,
 		transform: false,

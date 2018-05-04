@@ -1,28 +1,101 @@
-const mPytania = [
+const progi = [500,1000,2000,5000,10000,20000,40000,75000,125000,250000,500000,1000000];
+const player = {
+	"name": null,
+	"money": 0,
+	"gMoney": 0,
+	"lifebuoys": ["Zmień pytanie", "50/50", "Pomoc publiczności"]
+
+};
+
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+var answer;
+var shuffledAnswers = [];
+
+function publicHelp(arr){
+
+
+let A = Math.floor((Math.random() * 100));
+let B = Math.floor((Math.random() * (100 - A)));
+let C = Math.floor((Math.random() * (100 - A - B)));
+let D = 100 - A - B - C;
+
+let Abar = '|'.repeat(A/10);
+let Bbar = '|'.repeat(B/10);
+let Cbar = '|'.repeat(C/10);
+let Dbar = '|'.repeat(D/10);
+console.log ("A ["+  Abar.padEnd(10) + "] " + A + "%"  );   
+console.log ("B ["+  Bbar.padEnd(10) + "] " + B + "%"  ); 
+console.log ("C ["+  Cbar.padEnd(10) + "] " + C + "%"  ); 
+console.log ("D ["+  Dbar.padEnd(10) + "] " + D + "%"  ); 
+
+}
+
+function changeQuestion(nr){
+	let randomQuestion = Math.floor(Math.random() * quest[nr].questions.length );
+	let question = quest[nr].questions[randomQuestion].contents;
+	let allAnswers = quest[nr].questions[randomQuestion].q.slice(0);
+	let nowMoney = quest[nr].money;
+	answer = quest[nr].questions[randomQuestion].a;
+	allAnswers.push(answer);
+	shuffleArray(allAnswers);
+	shuffledAnswers = {"A":allAnswers[0],
+		"B": allAnswers[1],
+		"C": allAnswers[2], 
+		"D": allAnswers[3]};
+	shuffledAnswers.id = nr +1;
+
+	return `${shuffledAnswers.id} pytanie za ${nowMoney}:
+[ ${question} ]
+A: ${shuffledAnswers.A}
+B: ${shuffledAnswers.B}
+C: ${shuffledAnswers.C}
+D: ${shuffledAnswers.D}` ;
+
+
+}
+
+function playerAnswer(arr, ans){
+	if(shuffledAnswers[ans] === answer ){
+		console.log("Poprawnie! :)");
+	}else{
+		console.log("Niepoprawnie! :(");
+	}
+}
+
+changeMoney(newMoney){
+	player.money = newMoney
+}
+
+
+const quest = [
 		{
-			"money": 100,
-			"questions": [
-				{
-					"q": "Ile lat ma anon?",
-					"a": ["10", "12", "15", "65"],
-					"t": "12"
-				},
-				{
-					"q": "Rok bitwy pod grunwaldem",
-					"a": ["1856", "1234", "1233", "1410"],
-					"t": "12"
-				}
-			],
 			"money": 500,
 			"questions": [
 				{
-					"q": "Ile lat ma anon?",
-					"a": ["10", "12", "15", "65"],
-					"t": "12"
+					"contents": "Ile lat ma anon?",
+					"q": ["10", "15", "65"],
+					"a": "12"
 				}
-			],
+			]
+		},
+		{
+			"money": 1000,
+			"questions": [
+				{
+					"contents": "Ile lat ma anon?",
+					"q": ["10", "15", "65"],
+					"a": "12"
+				}
+			]
 		}
-	]
+	];
 
 
 
@@ -78,7 +151,6 @@ Tak! A - 1000 to poprawna odpowiedz!
 Twoja wygrana: 100zł
 Aby sprawdzić tabele wygranych wpisz /mi win 
 
-
 /mi win:
 [ MILIONERZY ]
 [1 000 000 zł] []
@@ -93,11 +165,15 @@ Aby sprawdzić tabele wygranych wpisz /mi win
 [2000 zł] []
 [1000 zł*] []
 [500 zł] []
-{
-	if(money )
-}
+
 
 ^^^ Jezeli gracz jest na danym etapie: pogrób^^
+
+[ MILIONERZY ]
+TAK! ODPOWIEDZ X - HASŁO JEST PRAWIDŁOWA!
+WYGRAŁES 1.000.000 $!
+player.name wygrał gre!
+(milionerzy zostają wyłączeni)
 
 
 
@@ -122,7 +198,6 @@ for( let i = 0; i <= 12; i++ ){
 	}
 }
 
-const progi = [500,1000,2000,5000]
 
 	for(let i = 0; i <= 12; i++){
 		if(mi.player.money >progi[i]){
@@ -138,15 +213,4 @@ const progi = [500,1000,2000,5000]
 	}
 
 	wyswietl (wiadomosc);
-
-switch(mi.player.money){
-	case 500:{
-		for(let i = 0; i <= 12; i++){
-			if(progi)
-		}
-	}
-	default:{
-		"co kurwa";
-	}
-}
 
