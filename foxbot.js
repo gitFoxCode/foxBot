@@ -884,7 +884,7 @@ api.sendMessage(`✅ *${todayis}*
                 if (regpatt.test(event.body)){
                     api.setMessageReaction(":haha:", event.messageID);
                 }
-                let lovepatt = /dobranoc|kc|kochamc ci[ęe]/gi;
+                let lovepatt = /dobranoc|kc|kocham ci[ęe]|sebu[sś]/gi;
                 if (lovepatt.test(event.body)){
                     api.setMessageReaction(":love:", event.messageID);
                 }
