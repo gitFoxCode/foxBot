@@ -703,11 +703,12 @@ Komendy:
                     let Bbar = '|'.repeat(B/10);
                     let Cbar = '|'.repeat(C/10);
                     let Dbar = '|'.repeat(D/10);
-                    api.sendMessage(`Publicznosc zaglosowala!:
-A [${Abar.padEnd(10)}]  ${A}% 
-B [${Bbar.padEnd(10)}]  ${B}% 
-C [${Cbar.padEnd(10)}]  ${C}% 
-D [${Dbar.padEnd(10)}]  ${D}%`, event.threadID); 
+                    api.sendMessage(`[ *MILIONERZY* ]
+Głosy publiczności:
+*A* [*${Abar.padEnd(10)}*]  ${A}% 
+*B* [*${Bbar.padEnd(10)}*]  ${B}% 
+*C* [*${Cbar.padEnd(10)}*]  ${C}% 
+*D* [*${Dbar.padEnd(10)}*]  ${D}%`, event.threadID); 
                 }        
         }
     },
