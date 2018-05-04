@@ -813,6 +813,7 @@ Obecnie: *${vsPLAYERS}*`, event.threadID);
             } else{
                 api.sendMessage("*ZŁA KOMENDA*", event.threadID);
             }
+        }
 
     },
     {
