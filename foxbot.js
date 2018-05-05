@@ -1475,8 +1475,9 @@ function publicHelp(arr){
 
     let numbers = [Math.random(), Math.random(), Math.random(), Math.random()]
     let sum = numbers.reduce((sum, val) => sum + val);
-    let [xA,xB,xC,xD] = numbers.map(val => Math.round(val / sum * 100)).sort((a, b) => b - a)
-/*
+    let [xA,xB,xC,xD] = numbers.map(val => Math.round(val / sum * 100)).sort((a, b) => b - a);
+    let final = [xA, xB, xC, xD];
+/*  
     let xA = Math.floor(Math.random() * 100);
     let xB= Math.floor((Math.random() * (100 - xA)));
     let xC= Math.floor((Math.random() * (100 - xA - xB)));
