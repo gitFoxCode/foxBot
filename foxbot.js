@@ -1483,8 +1483,6 @@ function publicHelp(arr){
     let xD= 100 - xA - xB - xC;
 */
     if(Math.random()<0.9){ //10% chance to fail
-        let final = [xA, xB, xC, xD].sort((a, b) => a - b);
-        final.reverse();
 
         if(correctLetter==shuffledAnswers.A){
             xA = final[0];
