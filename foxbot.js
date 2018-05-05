@@ -1458,7 +1458,7 @@ function publicHelp(arr){
  
     let search_term = 'Pomoc publiczności';
     let correctLetter;
-    
+
     for (let i=player.lifebuoys.length-1; i>=0; i--) {
         if (player.lifebuoys[i] === search_term) {
             player.lifebuoys.splice(i, 1);
@@ -1473,11 +1473,15 @@ function publicHelp(arr){
         }
     }
 
+    let numbers = [Math.random(), Math.random(), Math.random(), Math.random()]
+    let sum = numbers.reduce((sum, val) => sum + val);
+    let [xA,xB,xC,xD] = numbers.map(val => Math.round(val / sum * 100)).sort((a, b) => b - a)
+/*
     let xA = Math.floor(Math.random() * 100);
     let xB= Math.floor((Math.random() * (100 - xA)));
     let xC= Math.floor((Math.random() * (100 - xA - xB)));
     let xD= 100 - xA - xB - xC;
-
+*/
     if(Math.random()<0.9){ //10% chance to fail
         let final = [xA, xB, xC, xD].sort((a, b) => a - b);
         final.reverse();
