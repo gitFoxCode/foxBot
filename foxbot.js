@@ -1516,12 +1516,12 @@ function publicHelp(arr){
     let Cbar = '|'.repeat(xC/10);
     let Dbar = '|'.repeat(xD/10);
 
-    api.sendMessage(`*[ MILIONERZY ]*
+    return `*[ MILIONERZY ]*
 Głosy publiczności:
 *A* [${Abar.padEnd(10)}]  ${xA}% 
 *B* [${Bbar.padEnd(10)}]  ${xB}% 
 *C* [${Cbar.padEnd(10)}]  ${xC}% 
-*D* [${Dbar.padEnd(10)}]  ${xD}%`, event.threadID);
+*D* [${Dbar.padEnd(10)}]  ${xD}%`;
 
 /*let A = Math.floor((Math.random() * 100));
 let B = Math.floor((Math.random() * (100 - A)));
