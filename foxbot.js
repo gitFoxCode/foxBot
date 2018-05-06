@@ -1482,28 +1482,28 @@ function publicHelp(arr){
     let xB= Math.floor((Math.random() * (100 - xA)));
     let xC= Math.floor((Math.random() * (100 - xA - xB)));
     let xD= 100 - xA - xB - xC;
-*/
+*/ console.log(shuffledAnswers.A);
     if(Math.random()<0.9){ //10% chance to fail
 
-        if(correctLetter==shuffledAnswers.A){
+        if(correctLetter==abcd[0]){
             xA = final[0];
             xB = final[1];
             xC = final[2];
             xD = final[3];
         }
-        if(correctLetter==shuffledAnswers.B){
+        if(correctLetter==abcd[1]){
             xA = final[3];
             xB = final[0];
             xC = final[2];
             xD = final[1];
         }
-        if(correctLetter==shuffledAnswers.C){
+        if(correctLetter==abcd[2]){
             xA = final[1];
             xB = final[3];
             xC = final[0];
             xD = final[2];
         }
-        if(correctLetter==shuffledAnswers.D){
+        if(correctLetter==abcd[3]){
             xA = final[1];
             xB = final[3];
             xC = final[2];
