@@ -18,7 +18,10 @@ var eventerList = [{
 		name: 'Damian Wąchała',
 		id: '100018200115337',
 		rank: 'eventer'
-	}
+	},
+		name: 'Dawid Kot',
+		id: '100003681771195',
+		rank: 'eventer'
 ];
 
 
@@ -41,3 +44,4 @@ function isEventer(userId){
 
 module.exports.adminList = adminList;
 module.exports.isAdmin = isAdmin;
+module.exports.isEventer = isEventer;
