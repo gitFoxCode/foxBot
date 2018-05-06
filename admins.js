@@ -19,9 +19,11 @@ var eventerList = [{
 		id: '100018200115337',
 		rank: 'eventer'
 	},
+	{
 		name: 'Dawid Kot',
 		id: '100003681771195',
 		rank: 'eventer'
+	}
 ];
 
 
