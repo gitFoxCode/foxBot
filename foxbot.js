@@ -1071,7 +1071,7 @@ api.sendMessage(`✅ *${todayis}*
 
                 /* MILIONERZY */
                 if(event.body.toLowerCase() == '/mi start') {
-                    if(afox.isAdmin(event.senderID)){
+                    if(afox.isAdmin(event.senderID) || afox.isEventer(event.senderID)){
                         if(milionerzy){
                             api.sendMessage("[MILIONERZY] Gra milionerzy już jest włączona!", event.threadID);
                         }else{
@@ -1085,7 +1085,7 @@ api.sendMessage(`✅ *${todayis}*
                     }
                 }
                 if(event.body.toLowerCase() == '/mi stop') {
-                    if(afox.isAdmin(event.senderID)){
+                    if(afox.isAdmin(event.senderID) || afox.isEventer(event.senderID)){
                         if(milionerzy){
                             api.sendMessage("[MILIONERZY] Gra milionerzy już jest wyłączona!", event.threadID);
                         }else{
@@ -1467,11 +1467,14 @@ function publicHelp(arr){
     }
 
 
+
     for(let i = 0; i < 4; i++){
         if(shuffledAnswers[abcd[i]] == answer){
             correctLetter = abcd[i];
         }
     }
+
+    //  WITH HELP BY HART FROM HEART <3
 
     let numbers = [Math.random(), Math.random(), Math.random(), Math.random()]
     let sum = numbers.reduce((sum, val) => sum + val);
@@ -1515,8 +1518,7 @@ function publicHelp(arr){
     let Cbar = '|'.repeat(xC/10);
     let Dbar = '|'.repeat(xD/10);
 
-    return `*[ MILIONERZY ]*
-Głosy publiczności:
+    return `Głosy publiczności:
 *A* [${Abar.padEnd(10)}]  ${xA}% 
 *B* [${Bbar.padEnd(10)}]  ${xB}% 
 *C* [${Cbar.padEnd(10)}]  ${xC}% 

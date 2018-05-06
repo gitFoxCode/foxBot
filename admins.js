@@ -14,6 +14,13 @@ var adminList = [{
 		rank: 'admin'
 	}];
 
+var eventerList = [{
+		name: 'Damian Wąchała',
+		id: '100018200115337',
+		rank: 'eventer'
+	}
+];
+
 
 function isAdmin(userId){
 	for (let i = 0; i <= adminList.length -1; i++) {
@@ -23,7 +30,14 @@ function isAdmin(userId){
 		} 
 	}
 };
-
+function isEventer(userId){
+	for (let i = 0; i <= eventerList.length -1; i++) {
+		if(eventerList[i].id == userId){
+			return true;
+			break;
+		} 
+	}
+};
 
 module.exports.adminList = adminList;
 module.exports.isAdmin = isAdmin;
