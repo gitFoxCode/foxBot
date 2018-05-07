@@ -1076,7 +1076,6 @@ api.sendMessage(`✅ *${todayis}*
                             api.sendMessage("[MILIONERZY] Gra milionerzy już jest włączona!", event.threadID);
                         }else{
                             api.sendMessage("[MILIONERZY] Gra milionerzy zostaje włączona!", event.threadID);
-                            milionerzy = true;
                             miStart(event.threadID); 
                             console.log(event.threadID);
                         }
@@ -1090,7 +1089,6 @@ api.sendMessage(`✅ *${todayis}*
                             api.sendMessage("[MILIONERZY] Gra milionerzy już jest wyłączona!", event.threadID);
                         }else{
                             api.sendMessage("[MILIONERZY] Gra milionerzy zostaje przerwana!", event.threadID);
-                            milionerzy = false;
                             miStop(); 
                         }
                     } else{
@@ -1126,7 +1124,7 @@ if(event.body.toLowerCase() == '/mi gotowy') {
         }
     }else{
         api.sendMessage("*[ MILIONERZY ]*"+
-                `\nMilionerzy nie są włączeni! Skontaktuj się a adminem!`, event.threadID);
+                `\nMilionerzy nie są włączeni! tuj się a adminem lub eventerem!`, event.threadID);
     }
 };
 
@@ -1139,7 +1137,7 @@ if(event.body.toLowerCase() == '/mi join') {
                         console.log("Milionerzy ERROR: "+ err);
                     }
                     for(let prop in ret) {
-                        player.name = ret[prop].name;
+                        pSkontaklayer.name = ret[prop].name;
                     }
                 });
                 // ToFix: Change setTimeout to promise;
@@ -1168,7 +1166,7 @@ if(event.body.toLowerCase() == '/mi join') {
         }
     } else{
         api.sendMessage("*[ MILIONERZY ]*"+
-            `\nMilionerzy nie są włączeni! Skontaktuj się a adminem!`, event.threadID);
+            `\nMilionerzy nie są włączeni! Skontaktuj się a adminem lub eventerem!`, event.threadID);
 
     }
         
@@ -1195,7 +1193,7 @@ if(event.body.toLowerCase() == '/mi a' || event.body.toLowerCase() == '/mi b' ||
 
     }else{
         api.sendMessage("*[ MILIONERZY ]*"+
-                `\nMilionerzy nie są włączeni! Skontaktuj się a adminem!`, event.threadID);
+                `\nMilionerzy nie są włączeni! Skontaktuj się a adminem lub eventerem!`, event.threadID);
     }
 }
 
@@ -1229,7 +1227,7 @@ if(event.body.toLowerCase() == '/mi 50') {
         }
     } else{
         api.sendMessage("*[ MILIONERZY ]*"+
-                `\nMilionerzy nie są włączeni! Skontaktuj się a adminem!`, event.threadID);
+                `\nMilionerzy nie są włączeni! Skontaktuj się a adminem lub eventerem!`, event.threadID);
     }
 }
 
@@ -1260,7 +1258,7 @@ if(event.body.toLowerCase() == '/mi publicznosc') {
         }
     } else{
         api.sendMessage("*[ MILIONERZY ]*"+
-                `\nMilionerzy nie są włączeni! Skontaktuj się a adminem!`, event.threadID);
+                `\nMilionerzy nie są włączeni! Skontaktuj się a adminem lub eventerem!`, event.threadID);
     }
 }
 
@@ -1293,7 +1291,7 @@ if(event.body.toLowerCase() == '/mi zmien') {
         }
     }else {
         api.sendMessage("*[ MILIONERZY ]*"+
-                `\nMilionerzy nie są włączeni! Skontaktuj się a adminem!`, event.threadID);
+                `\nMilionerzy nie są włączeni! Skontaktuj się a adminem lub eventerem!`, event.threadID);
     }
 }
 
@@ -1319,7 +1317,7 @@ if(event.body.toLowerCase() == '/mi kola') {
         }
     }else {
         api.sendMessage("*[ MILIONERZY ]*"+
-                `\nMilionerzy nie są włączeni! Skontaktuj się a adminem!`, event.threadID);
+                `\nMilionerzy nie są włączeni! Skontaktuj się a adminem lub eventerem!`, event.threadID);
     }
 }
 
@@ -1337,7 +1335,7 @@ if(event.body.toLowerCase() == '/mi leave') {
         }
     }else{
         api.sendMessage("*[ MILIONERZY ]*"+
-                `\nMilionerzy nie są włączeni! Skontaktuj się a adminem!`, event.threadID);
+                `\nMilionerzy nie są włączeni! Skontaktuj się a adminem lub eventerem!`, event.threadID);
     }
 }
 
@@ -1372,7 +1370,7 @@ if(event.body.toLowerCase() == '/mi win') {
         }
     }else {
         api.sendMessage("*[ MILIONERZY ]*"+
-            `\nMilionerzy nie są włączeni! Skontaktuj się a adminem!`, event.threadID);
+            `\nMilionerzy nie są włączeni! Skontaktuj się a adminem lub eventerem!`, event.threadID);
     }
 }
 
@@ -1392,7 +1390,7 @@ if(event.body.toLowerCase() == '/mi repeat') {
     }
     }else{
         api.sendMessage("*[ MILIONERZY ]*"+
-                `\nMilionerzy nie są włączeni! Skontaktuj się a adminem!`, event.threadID);
+                `\nMilionerzy nie są włączeni! Skontaktuj się a adminem lub eventerem!`, event.threadID);
     }
 }
 
@@ -1710,12 +1708,12 @@ function playerAnswer(arr, ans){
 }
 
 function miStop(){
+    milionerzy = false;
     player.id = 0;
     player.name = "";
     player.money =  0;
     player.gMoney = 0;
     player.lifebuoys = ["Zmień pytanie", "50/50", "Pomoc publiczności"]; 
-    milionerzy = false;
     realAnswer = "";
     answering = false;
     answer = "";
