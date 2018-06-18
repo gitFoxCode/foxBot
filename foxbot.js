@@ -752,11 +752,18 @@ Komendy:
         syntax: "",
         desc: "x",
         func: (api, event, args) => {
-            let randomcat = Math.floor(Math.random() * 47) + 1;
-            let msg = {
-                attachment: fs.createReadStream(`./imgs/cats/${randomcat}.jpg`)
-            }
-            api.sendMessage(msg, event.threadID);
+
+            fs.readdir('./imgs/cats', (err, files) => {
+                let randomcat = Math.floor(Math.random() * files.length) + 1;
+                let msg = {
+                    attachment: fs.createReadStream(`./imgs/cats/${randomcat}.jpg`)
+                }
+                api.sendMessage(msg, event.threadID);
+            });
+
+
+
+
         }
     },
     {
@@ -962,11 +969,18 @@ api.sendMessage(`✅ *${todayis}*
 🕗 *Godzina*: ${h}:0${m} 
 🐣 ${mfox.helloList[todayRandNumber]} <3`, own);
                 
-api.sendMessage(`✅ *${todayis}*
-✅ *Data*: ${dateis}
-🔴 *Temperatura*: ${nowTemp}°C
+api.sendMessage(`‼️ O KURWA DZISIAJ E.12 !!!! 
+📢🔔🔔 *${todayis}* ${dateis}
+🔴 *Grzeje*: ${nowTemp}°C
 🕗 *Godzina*: ${h}:0${m}
-🐣 ${mfox.helloList[todayRandNumber]} <3`, groupID2);
+🔔 *Do egzaminu:* 3 godziny!!
+🐣 19/40
+🆘 Szybka powtorka:
+- Jaką liczbę dziesiętną zapisano na jednym bajcie w kodzie znak – moduł: 1 1111111?
+
+- Magistrala, która łączy w komputerze procesor z kontrolerem pamięci, składająca się z szyny adresowej, szyny danych i linii sterujących, nosi nazwę?
+
+- W systemie Linux ifconfig oznacza?`, groupID2);
                 
 });
 
@@ -1012,6 +1026,10 @@ api.sendMessage(`✅ *${todayis}*
                 let lovepatt = /dobranoc|kc|kocham ci[ęe]|sebu[sś]/gi;
                 if (lovepatt.test(event.body)){
                     api.setMessageReaction(":love:", event.messageID);
+                }
+                let angerypatt = /anime/gi;
+                if (angerypatt.test(event.body)){
+                    api.setMessageReaction(":angry:", event.messageID);
                 }
 
 				if (!spokoj){ // Only for somm [ToDevelop]
