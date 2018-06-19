@@ -969,18 +969,11 @@ api.sendMessage(`✅ *${todayis}*
 🕗 *Godzina*: ${h}:0${m} 
 🐣 ${mfox.helloList[todayRandNumber]} <3`, own);
                 
-api.sendMessage(`‼️ O KURWA DZISIAJ E.12 !!!! 
-📢🔔🔔 *${todayis}* ${dateis}
-🔴 *Grzeje*: ${nowTemp}°C
-🕗 *Godzina*: ${h}:0${m}
-🔔 *Do egzaminu:* 3 godziny!!
-🐣 19/40
-🆘 Szybka powtorka:
-- Jaką liczbę dziesiętną zapisano na jednym bajcie w kodzie znak – moduł: 1 1111111?
-
-- Magistrala, która łączy w komputerze procesor z kontrolerem pamięci, składająca się z szyny adresowej, szyny danych i linii sterujących, nosi nazwę?
-
-- W systemie Linux ifconfig oznacza?`, groupID2);
+api.sendMessage(`✅ *${todayis}*
+✅ *Data*: ${dateis}
+🔴 *Temperatura*: ${nowTemp}°C
+🕗 *Godzina*: ${h}:0${m} 
+🐣 ${mfox.helloList[todayRandNumber]} <3`, groupID2);
                 
 });
 
