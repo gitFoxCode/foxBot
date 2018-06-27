@@ -9,6 +9,8 @@
   "dependencies": {
     "facebook-chat-api": "^1.5.1",
     "mathjs": "^4.2.1",
+    "cheerio": "^1.0.0-rc.2",
+    "request-promise": "^4.2.2",
     "ontime": "0.0.4",
     "rss-to-json": "^1.0.4",
     "weather-js": "^2.0.0"

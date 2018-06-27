@@ -2,6 +2,8 @@ const login = require("facebook-chat-api"),
 	fs = require('fs'),
 	ontime = require('ontime'), // onTime
 	weather = require('weather-js'), // Weather info
+    rp = require('request-promise'), //Requests
+    cheerio = require('cheerio'), // jQuery (DOM)
     foxMath = require('mathjs'), // Calc
     Feed = require('rss-to-json'), // RSS 
 	afox = require('./admins.js'),
@@ -362,16 +364,36 @@ Komendy:
             api.sendMessage(mfox.helloList[randnumber], event.threadID);
         }
     },
-        {
-        cmd: "wrozba",
+    {
+        cmd: "cytat",
         groupAccess: false,
         transform: false,
         hidden: false,
         syntax: "",
-        desc: "Przepowiednia",
+        desc: "Cytat dnia",
         func: (api, event, args) => {
-              let randnumber = Math.floor(Math.random() * 27) + 1;
-            api.sendMessage("Przepowiadam numer: " + randnumber, event.threadID);
+              let roptions = {
+                  uri: `https://www.kalendarzswiat.pl/dzisiaj`,
+                  transform: function (body) {
+                    return cheerio.load(body);
+                  }
+                };
+
+                rp(roptions)
+                  .then(($) => {
+                    let quoteDay = $('.quote-of-the-day').text().replace(/\s+/g, " ");
+                    //let moon = $('.dc_moon_phase').text().replace(/\s+/g, " ");
+                    //let testo = $('.side_card div:nth-child(6)').text();
+                    //quoteDayDone = quoteDay.replace(/^\s+|\s+$/g, "");
+                    //quoteDayDone = quoteDay.replace(/\s+/g, " ");
+                    api.sendMessage("Cytat na dzisiaj: " + quoteDay, event.threadID);
+                    //api.sendMessage(moon, event.threadID);
+                    //api.sendMessage(testo, event.threadID);
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                  });
+           // api.sendMessage("Przepowiadam numer: " + randnumber, event.threadID);
         }
     },
     {
@@ -928,25 +950,25 @@ let m = date.getMinutes();
 
 switch(todayis) {
     case "Monday":
-        todayis = "Poniedziałek";
+        todayis = "😓 Poniedziałek";
         break;
     case "Tuesday":
-        todayis = "Wtorek";
+        todayis = "🚓 Wtorek";
         break;
     case "Wednesday":
-        todayis = "Środa";
+        todayis = "🍆 Środa";
         break;
     case "Thursday":
-        todayis = "Czwartek";
+        todayis = "🚬 Czwartek";
         break;
     case "Friday":
-        todayis = "Piątek!";
+        todayis = "🍕 Piątek!";
         break;
     case "Saturday":
-        todayis = "Sobota!";
+        todayis = "🍸 Sobota!";
         break;
     case "Sunday":
-        todayis = "Niedziela!";
+        todayis = "🍲 Niedziela!";
         break;
     default:
         console.log("Day error.");
@@ -957,24 +979,66 @@ let komixxy = "625244260932803";
 let own = "473427749508360";
 let todayRandNumber = Math.floor(Math.random() * mfox.helloList.length);
 
-api.sendMessage(`✅ *${todayis}*
-✅ *Data*: ${dateis}
+ let roptions = {
+                  uri: `https://www.kalendarzswiat.pl/dzisiaj`,
+                  transform: function (body) {
+                    return cheerio.load(body);
+                  }
+                };
+ rp(roptions).then(($) => {
+    let quoteDay = $('.quote-of-the-day').text().replace(/\s+/g, " ");
+    let moon = $('.dc_moon_phase').text().replace(/\s+/g, " ");
+    let daysToEnd = $('.side_card div:nth-child(6)').text().replace(/\s+/g, " ");
+
+
+/*api.sendMessage(`‼⏰⏰⏰⏰🔊📢📢📢🔔🔔🔔‼️
+📰 *DZIEŃ DOBRY*! 📰
+🏁 *Dzień:* *${todayis}*
+📆 *Data*: ${dateis}
 🔴 *Temperatura*: ${nowTemp}°C
 🕗 *Godzina*: ${h}:0${m}
-🐣 ${mfox.helloList[todayRandNumber]} <3`, komixxy);
+📜 *Cytat na dzisiaj:* ${quoteDay}
+🌝 ${moon}
+⌛ ${daysToEnd}
+‼⏰⏰⏰⏰🔊📢📢📢🔔🔔🔔️‼️`, '1943585119007892');*/
 
-api.sendMessage(`✅ *${todayis}*
-✅ *Data*: ${dateis}
+api.sendMessage(`‼⏰⏰⏰⏰🔊📢📢📢🔔🔔🔔‼️
+📰 *DZIEŃ DOBRY*! 📰
+🏁 *Dzień:* *${todayis}*
+📆 *Data*: ${dateis}
 🔴 *Temperatura*: ${nowTemp}°C
-🕗 *Godzina*: ${h}:0${m} 
-🐣 ${mfox.helloList[todayRandNumber]} <3`, own);
-                
-api.sendMessage(`✅ *${todayis}*
-✅ *Data*: ${dateis}
+🕗 *Godzina*: ${h}:0${m}
+📜 *Cytat na dzisiaj:* ${quoteDay}
+🌝 ${moon}
+⌛ ${daysToEnd}
+‼⏰⏰⏰⏰🔊📢📢📢🔔🔔🔔️‼️`, komixxy);
+
+api.sendMessage(`‼⏰⏰⏰⏰🔊📢📢📢🔔🔔🔔‼️
+📰 *DZIEŃ DOBRY*! 📰
+🏁 *Dzień:* *${todayis}*
+📆 *Data*: ${dateis}
 🔴 *Temperatura*: ${nowTemp}°C
-🕗 *Godzina*: ${h}:0${m} 
-🐣 ${mfox.helloList[todayRandNumber]} <3`, groupID2);
+🕗 *Godzina*: ${h}:0${m}
+📜 *Cytat na dzisiaj:* ${quoteDay}
+🌝 ${moon}
+⌛ ${daysToEnd}
+‼⏰⏰⏰⏰🔊📢📢📢🔔🔔🔔️‼️`, own);
                 
+api.sendMessage(`‼⏰⏰⏰⏰🔊📢📢📢🔔🔔🔔‼️
+📰 *DZIEŃ DOBRY*! 📰
+🏁 *Dzień:* *${todayis}*
+📆 *Data*: ${dateis}
+🔴 *Temperatura*: ${nowTemp}°C
+🕗 *Godzina*: ${h}:0${m}
+📜 *Cytat na dzisiaj:* ${quoteDay}
+🌝 ${moon}
+⌛ ${daysToEnd}
+‼⏰⏰⏰⏰🔊📢📢📢🔔🔔🔔️‼️`, groupID2);
+    
+  }) .catch((err) => {
+      console.log(err);
+  });
+
 });
 
     ot.done();
