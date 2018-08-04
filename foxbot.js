@@ -800,7 +800,7 @@ Komendy:
                 //}
                 let randomcat = files[Math.floor(Math.random()*files.length)];
                 let msg = {
-                    attachment: fs.createReadStream(`./imgs/cats/${randomcat}`);
+                    attachment: fs.createReadStream(`./imgs/cats/${randomcat}`)
                 }
                 console.log(randomcat);
 
