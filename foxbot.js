@@ -730,14 +730,15 @@ Komendy:
         }
     },
     {
-        cmd: "wi test", //ToFix TODEVELOP
+        cmd: "wisielecx",
         groupAccess: false,
         transform: false,
         hidden: false,
         syntax: "[number]",
         desc: "test wisielca",
         func: (api, event, args) => {
-                wiStage(args);
+                wiStage(args[0]);
+                console.log(args);
         }
     },
      {
@@ -1528,6 +1529,14 @@ if(event.body.toLowerCase() == '/mi repeat') {
     }
 }
 
+if(event.body.toLowerCase().includes('/wisielec')) {
+                let ansInput = event.body.toLowerCase();
+                let ansSplit = ansInput.split(' ');
+                let ansArgs = ansInput.slice(ansSplit[0].length + 1);
+                let ansArg = ansArgs.split(' ')[0];
+                wiStage(ansArg);
+}
+
 /* DELETE THAT */
 
 
@@ -1858,6 +1867,7 @@ function miStop(){
 }
 /* ************* HANGMAN *************** */
 function wiStart(groupID){
+    alphabet = "abcćdefghijklmnńopqrsśtuvwxyzżź";
     hangman = groupID;
     api.sendMessage(`[ WISIELEC ]
 Gra w wisielca wystartowała! Kto chce dać słowo, które reszta musi zgadnąć?
@@ -1867,117 +1877,133 @@ Komenda: /wi join (! MAX *1* OSOBA !)`, event.threadID);
 
 var hangman_canvas = "--WISIELEC--";
 
-function wiStage(nr){
+function wiStage(nr, alphabet){
+    console.log("Wistage: "+ nr);
     switch (nr) {
-        case 1:
-            hangman_canvas = `
-        |        
-        |              
-        |                
-        |                 
-        |               
-        |                   
-        |___ `;
+        case '1':
+        console.log('case 1');
+            hangman_canvas = `\`\`\`
+|        
+|              
+|                
+|                 
+|               
+|                   
+|___ 
+\`\`\``;
             break;
-        case 2:
-            hangman_canvas = `
-       _________
-        |        
-        |              
-        |                
-        |                 
-        |               
-        |                   
-        |___ `;
+        case '2':
+            hangman_canvas = `\`\`\`
+_________
+|        
+|              
+|                
+|                 
+|               
+|                   
+|___ 
+\`\`\``;
             break;
-        case 3:
-            hangman_canvas = `
-       _________
-        |/   |      
-        |              
-        |                
-        |                 
-        |               
-        |                   
-        |___  `;
+        case '3':
+            hangman_canvas = `\`\`\`
+_________
+|/   |      
+|              
+|                
+|                 
+|               
+|                   
+|___  
+\`\`\``;
             break;
-        case 4:
-            hangman_canvas = `
-       _________       
-        |/   |              
-        |   (_)
-        |                         
-        |                       
-        |                         
-        |                          
-        |___ `;
+        case '4':
+            hangman_canvas = `\`\`\`
+_________       
+|/   |              
+|   (_)
+|                         
+|                       
+|                         
+|                          
+|___ 
+\`\`\``;
             break;
-        case 5:
-            hangman_canvas = `
-       ________               
-        |/   |                   
-        |   (_)                  
-        |    |                     
-        |    |                    
-        |                           
-        |                            
-        |___ `;
+        case '5':
+            hangman_canvas = `\`\`\`
+________               
+|/   |                   
+|   (_)                  
+|    |                     
+|    |                    
+|                           
+|                            
+|___ 
+\`\`\``;
             break;
-        case 6:
-            hangman_canvas = `
-       ________               
-        |/   |                   
-        |   (_)                  
-        |    |                     
-        |    |                    
-        |   /                      
-        |                            
-        |___ `;
+        case '6':
+            hangman_canvas = `\`\`\`
+________               
+|/   |                   
+|   (_)                  
+|    |                     
+|    |                    
+|   /                      
+|                            
+|___ 
+\`\`\``;
             break;
-        case 7:
-            hangman_canvas = `
-       ________               
-        |/   |                   
-        |   (_)                  
-        |    |                     
-        |    |                    
-        |   / \                     
-        |                            
-        |___ `;
+        case '7':
+            hangman_canvas = `\`\`\`
+________               
+|/   |                   
+|   (_)                  
+|    |                     
+|    |                    
+|   / \\                     
+|                            
+|___ 
+\`\`\``;
         break;
-        case 8:
-            hangman_canvas = `
-       ________               
-        |/   |                   
-        |   (_)                  
-        |   /|                     
-        |    |                    
-        |   / \                    
-        |                            
-        |___ `;
+        case '8':
+            hangman_canvas = `\`\`\`
+ ________               
+|/   |                   
+|   (_)                  
+|   /|                     
+|    |                    
+|   / \\                    
+|                            
+|___ 
+\`\`\``;
             break;
-        case 9:
-            hangman_canvas = `
-       ________               
-        |/   |                   
-        |   (_)                  
-        |   /|\                     
-        |    |                    
-        |   / \                    
-        |                            
-        |___ `;
+        case '9':
+            hangman_canvas = `\`\`\`
+________               
+|/   |                   
+|   (_)                  
+|   /|\\                     
+|    |                    
+|   / \\                    
+|                            
+|___ 
+\`\`\``;
             break;
-        case 10:
-            hangman_canvas = `
-       ________               
-        |/   |                   
-        |   (x_x)                  
-        |   /|\                    
-        |    |                    
-        |   / \                   
-        |                             
-        |___ 
-        PRZEGRAŁEŚ! `;
+        case '10':
+            hangman_canvas = `\`\`\`
+ ________               
+ |/   |                   
+ |   (x_x)                  
+ |   /|\\                    
+ |    |                    
+ |   / \\                   
+ |                             
+ |___ 
+ PRZEGRAŁEŚ! 
+\`\`\``;
+            break;
+        default:
+            hangman_canvas = "[Wystąpił błąd.]";
+            console.log("Case: " + nr);
             break;
     }
     api.sendMessage(hangman_canvas,event.threadID);
