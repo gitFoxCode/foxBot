@@ -794,10 +794,17 @@ Komendy:
         func: (api, event, args) => {
 
             fs.readdir('./imgs/cats', (err, files) => {
-                let randomcat = Math.floor(Math.random() * files.length) + 1;
+               // let randomcat = Math.floor(Math.random() * files.length) + 1;
+                //let msg = {
+                //    attachment: fs.createReadStream(`./imgs/cats/${randomcat}.jpg`)
+                //}
+                let randomcat = files[Math.floor(Math.random()*files.length)];
                 let msg = {
-                    attachment: fs.createReadStream(`./imgs/cats/${randomcat}.jpg`)
+                    attachment: fs.createReadStream(`./imgs/cats/${randomcat}`);
                 }
+                console.log(randomcat);
+
+
                 api.sendMessage(msg, event.threadID);
             });
 
