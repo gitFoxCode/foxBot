@@ -28,6 +28,13 @@ var milionerzy = false;
 
 /* - - - - - - - - - - */
 
+/* - - - - - - - - - - */
+/*      WISIELEC       */
+
+var hangman = 0;
+
+
+/* - - - - - - - - - - */
 
 /*                     */
 
@@ -722,6 +729,17 @@ Komendy:
                 api.sendMessage("Sebastian Włudzik, Sebastian Lis", event.threadID);
         }
     },
+    {
+        cmd: "wi test", //ToFix TODEVELOP
+        groupAccess: false,
+        transform: false,
+        hidden: false,
+        syntax: "[number]",
+        desc: "test wisielca",
+        func: (api, event, args) => {
+                wiStage(args);
+        }
+    },
      {
         cmd: "time", //ToFix TODEVELOP
         groupAccess: false,
@@ -1140,6 +1158,40 @@ api.sendMessage(`‼⏰⏰⏰⏰🔊📢📢📢🔔🔔🔔‼️
                 if(ai){
             		api.sendMessage("Moduł AI jest włączony!", event.threadID);
             	}
+
+
+
+
+                /* WISIELEC */
+
+                if(event.body.toLowerCase() == '/wi start') {
+                    if(afox.isAdmin(event.senderID) || afox.isEventer(event.senderID)){
+                        if(hangman){
+                            api.sendMessage("[WISIELEC] Gra w wisielca już jest włączona!", event.threadID);
+                        }else{
+                            api.sendMessage("[WISIELEC] Gra w wisielca zostaje włączona!", event.threadID);
+                            wiStart(event.threadID); 
+                            console.log(event.threadID);
+                        }
+                    } else{
+                        api.sendMessage("[NoAdmin] Nie masz uprawnień.", event.threadID);
+                    }
+                }
+                if(event.body.toLowerCase() == '/wi stop') {
+                    if(afox.isAdmin(event.senderID) || afox.isEventer(event.senderID)){
+                        if(hangman){
+                            api.sendMessage("[WISIELEC] Gra w wisielca już jest wyłączona!", event.threadID);
+                        }else{
+                            api.sendMessage("[WISIELEC] Gra w wisielca zostaje przerwana!", event.threadID);
+                            wiStop(); 
+                        }
+                    } else{
+                        api.sendMessage("[NoAdmin] Nie masz uprawnień.", event.threadID);
+                    }
+                }
+
+
+
 
 
 
@@ -1797,7 +1849,134 @@ function miStop(){
     api.sendMessage("*[ MILIONERZY ]*"+
         `\nGra została wyłączona!`, event.threadID);
 }
+/* ************* HANGMAN *************** */
+function wiStart(groupID){
+    hangman = groupID;
+    api.sendMessage(`[ WISIELEC ]
+Gra w wisielca wystartowała! Kto chce dać słowo, które reszta musi zgadnąć?
+Komenda: /wi join (! MAX *1* OSOBA !)`, event.threadID); 
+}
 
+
+var hangman_canvas = "--WISIELEC--";
+
+function wiStage(nr){
+    switch (nr) {
+        case 1:
+            hangman_canvas = `
+        |        
+        |              
+        |                
+        |                 
+        |               
+        |                   
+        |___ `;
+            break;
+        case 2:
+            hangman_canvas = `
+       _________
+        |        
+        |              
+        |                
+        |                 
+        |               
+        |                   
+        |___ `;
+            break;
+        case 3:
+            hangman_canvas = `
+       _________
+        |/   |      
+        |              
+        |                
+        |                 
+        |               
+        |                   
+        |___  `;
+            break;
+        case 4:
+            hangman_canvas = `
+       _________       
+        |/   |              
+        |   (_)
+        |                         
+        |                       
+        |                         
+        |                          
+        |___ `;
+            break;
+        case 5:
+            hangman_canvas = `
+       ________               
+        |/   |                   
+        |   (_)                  
+        |    |                     
+        |    |                    
+        |                           
+        |                            
+        |___ `;
+            break;
+        case 6:
+            hangman_canvas = `
+       ________               
+        |/   |                   
+        |   (_)                  
+        |    |                     
+        |    |                    
+        |   /                      
+        |                            
+        |___ `;
+            break;
+        case 7:
+            hangman_canvas = `
+       ________               
+        |/   |                   
+        |   (_)                  
+        |    |                     
+        |    |                    
+        |   / \                     
+        |                            
+        |___ `;
+        break;
+        case 8:
+            hangman_canvas = `
+       ________               
+        |/   |                   
+        |   (_)                  
+        |   /|                     
+        |    |                    
+        |   / \                    
+        |                            
+        |___ `;
+            break;
+        case 9:
+            hangman_canvas = `
+       ________               
+        |/   |                   
+        |   (_)                  
+        |   /|\                     
+        |    |                    
+        |   / \                    
+        |                            
+        |___ `;
+            break;
+        case 10:
+            hangman_canvas = `
+       ________               
+        |/   |                   
+        |   (x_x)                  
+        |   /|\                    
+        |    |                    
+        |   / \                   
+        |                             
+        |___ 
+        PRZEGRAŁEŚ! `;
+            break;
+    }
+    api.sendMessage(hangman_canvas,event.threadID);
+}
+
+/* ************************************ */
 
 function miStart(groupID){
     milionerzy = true;
