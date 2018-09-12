@@ -4,6 +4,11 @@ var adminList = [{
 		rank: 'admin'
 	},
 	{
+		name: 'Weronika Czerwińska',
+		id: '100004072840517',
+		rank: 'admin'
+	},
+	{
 		name: 'Sebastian Lis',
 		id: '100008996418514',
 		rank: 'admin'

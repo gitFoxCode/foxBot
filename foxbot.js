@@ -8,10 +8,29 @@ const login = require("facebook-chat-api"),
     Feed = require('rss-to-json'), // RSS 
 	afox = require('./admins.js'),
     mfox = require('./hello.js'),
+    funnyMessages = require('./funnyMessages.js'),
+    moment = require('moment'), // Time etc.
     //mi = require('./milionerzy.js'),
-	version = "1.5.0",
+	version = "1.6.0",
 	botId = "100022605855740"; // BOT ID !IMPORTANT
 
+
+/*    NOTIFICATIONS    */
+
+const NOTIFICATIONS = [
+    {
+        group: 1,
+        time: 123,
+        text: "Siema kurwa!!!"
+    },
+    {
+        group: 2,
+        time: 123,
+        text: "eloszka kurwa!!!"
+    }
+];
+
+/* - - - - - - - - - - */
 
 /*    GAMES SETTINGS   */
 
@@ -214,6 +233,49 @@ Komendy:
                 }
             });
             api.sendMessage("Ustawiłem emoji czatu na " + args, event.threadID);
+        }
+    },
+    {
+        // Powiadomienia [*!]
+        cmd: "powiadomienie",
+        groupAccess: false,
+        transform: false,
+        hidden: false,
+        syntax: " [GODZINA] [TEXT]",
+        desc: "Zmiana emoji czatu",
+        func: (api, event, args) => {
+            if(args){
+                if(args.trim().split(/\s+/).length >= 2){
+                    let time = args.replace(/ .*/,'');
+
+                    if(moment(time, "kk", true).isValid()){
+
+                        let text = args.substr(args.indexOf(" ") + 1);
+
+                        console.log("Ustawiony czas: ", time);
+                        console.log("Tekst: ", text);
+                        console.log("ID Grupy: ", event.threadID);
+                        console.log("Dodano notifications:", NOTIFICATIONS[NOTIFICATIONS.length-1]);
+
+                        api.sendMessage("[!] Dodano Przypomnienie!", event.threadID);
+
+                        NOTIFICATIONS.push({
+                            group: event.threadID, 
+                            time: time,
+                            text: text
+                        });
+
+                        api.sendMessage(`[!] O godzinie ${time} o treści "${text}"`, event.threadID);
+
+                    }else{
+                        api.sendMessage("[!] Godzina musi być liczbą całkowitą od 1 do 24", event.threadID);
+                    }
+                }else{
+                    api.sendMessage("[!] Musisz podać godzinę oraz wiadomość, która ma zostać wysłana", event.threadID);
+                }
+            } else{
+                api.sendMessage("[!] /powiadomienie [GODZINA] [WIADOMOŚĆ]", event.threadID);
+            }
         }
     },
     {
@@ -956,11 +1018,10 @@ login({appState: JSON.parse(fs.readFileSync('appstate.json', 'utf8'))}, (err, ap
 	api.setOptions({ listenEvents: false }); // Słuchanie eventów: True
 	// api.sendMessage("Pomyślny restart \n Witam ponownie :)", defaultGroupId);
 
-
-
+// ######################################################################
+// ########################## DAILY MESSAGES ############################
+// ######################################################################
 // Group TI: 1404205732928620
-
-
 ontime({
     cycle: '7:00:00'
 }, function (ot) {
@@ -1071,12 +1132,60 @@ api.sendMessage(`‼⏰⏰⏰⏰🔊📢📢📢🔔🔔🔔‼️
     return;
 });
 
+// ######################################################################
+// ####################### PERSONAL MESSAGES ############################
+// ######################################################################
+let wampiID = '100004072840517';
+let wakeup_msg = ['Wstawaj wampi! <3', 'Dzień dobry! <3', 'Dzień dobry wampi <3'];
+let sleep_msg = ['Dobranoc! <3', 'Dobranoc Wampi <3!', 'Miłych snów <3', '<3 kc dobranoc'];
+let wakeup_h = "6";
+let wakeup_m = "11";
+let sleep_h = "1";
+ontime({
+    cycle: `${wakeup_h}:${wakeup_m}:00`
+}, function (ot) {
+    let randnumber = Math.floor(Math.random() * wakeup_msg.length);
+    api.sendMessage(wakeup_msg[randnumber], wampiID);
+    ot.done();
+    return;
+})
+ontime({
+    cycle: `${sleep_h}:00:00`
+}, function (ot) {
+    let randnumber = Math.floor(Math.random() * sleep_msg.length);
+    api.sendMessage(sleep_msg[randnumber], wampiID);
+    ot.done();
+    return;
+})
+
+let r_h = Math.floor(Math.random() * 8) + 12;
+let r_m = Math.floor(Math.random() * 59) + 1;
+let r_msg = ['KC! <3', 'Kc Wampi <3', 'KOCHAM CIE WAMPI!!! <3', 'kc'];
+
+ontime({
+    cycle: `${r_h}:${r_m}:00`
+}, function (ot) {
+    let randnumber = Math.floor(Math.random() * r_msg.length);
+    api.sendMessage(r_msg[randnumber], wampiID);
+    ot.done();
+    return;
+})
+
+// ######################################################################
+// ######################## FUNNY  MESSAGES #############################
+// ######################################################################
+let randomHour = Math.floor(Math.random() * 8) + 12;
+let randomMinute = Math.floor(Math.random() * 59) + 1;
 
 
-
-
-
-
+ontime({
+    cycle: `${randomHour}:${randomMinute}:00`
+}, function (ot) {
+    let randnumber = Math.floor(Math.random() * funnyMessages.funnyMsg.length);
+    api.sendMessage(funnyMessages.funnyMsg[randnumber], '625244260932803');
+    ot.done();
+    return;
+})
 
 
 
