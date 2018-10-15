@@ -1018,10 +1018,26 @@ login({appState: JSON.parse(fs.readFileSync('appstate.json', 'utf8'))}, (err, ap
 	api.setOptions({ listenEvents: false }); // Słuchanie eventów: True
 	// api.sendMessage("Pomyślny restart \n Witam ponownie :)", defaultGroupId);
 
+
+
+
 // ######################################################################
 // ########################## DAILY MESSAGES ############################
 // ######################################################################
+////// REMINDER
+ontime({
+    cycle: `17:00:00`
+}, function (ot) {
+    api.sendMessage('⚠ Reminder: https://instaling.pl/', '1341400789301697');
+    ot.done();
+    return;
+})
+
+
+
 // Group TI: 1404205732928620
+
+
 ontime({
     cycle: '7:00:00'
 }, function (ot) {
@@ -1158,10 +1174,21 @@ ontime({
     return;
 })
 
-let r_h = Math.floor(Math.random() * 8) + 12;
-let r_m = Math.floor(Math.random() * 59) + 1;
-let r_msg = ['KC! <3', 'Kc Wampi <3', 'KOCHAM CIE WAMPI!!! <3', 'kc'];
-
+function randomlyHour(){ // To do
+    var r_h = Math.floor(Math.random() * 8) + 12;
+    var r_m = Math.floor(Math.random() * 59) + 1;
+}
+ontime({
+    cycle: '00:00:00'
+}, function(ot){
+    randomlyHour();
+    randomlyHour2();
+    ot.done();
+    return;
+})
+randomlyHour();
+randomlyHour2();
+ let r_msg = ['KC! <3', 'Kc Wampi <3', 'KOCHAM CIE WAMPI!!! <3', 'kc','kckckckkc', 'czesc C:', '🙈']; 
 ontime({
     cycle: `${r_h}:${r_m}:00`
 }, function (ot) {
@@ -1174,8 +1201,11 @@ ontime({
 // ######################################################################
 // ######################## FUNNY  MESSAGES #############################
 // ######################################################################
-let randomHour = Math.floor(Math.random() * 8) + 12;
-let randomMinute = Math.floor(Math.random() * 59) + 1;
+
+function randomlyHour2(){ // To do
+   var randomHour = Math.floor(Math.random() * 8) + 12;
+    var randomMinute = Math.floor(Math.random() * 59) + 1; 
+}
 
 
 ontime({
