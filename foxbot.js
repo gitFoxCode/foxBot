@@ -21,12 +21,12 @@ const NOTIFICATIONS = [
     {
         group: 1,
         time: 123,
-        text: "Siema kurwa!!!"
+        text: "dupa"
     },
     {
         group: 2,
         time: 123,
-        text: "eloszka kurwa!!!"
+        text: "dupa"
     }
 ];
 
@@ -1026,9 +1026,17 @@ login({appState: JSON.parse(fs.readFileSync('appstate.json', 'utf8'))}, (err, ap
 // ######################################################################
 ////// REMINDER
 ontime({
-    cycle: `17:00:00`
+    cycle: '17:00:00'
 }, function (ot) {
     api.sendMessage('⚠ Reminder: https://instaling.pl/', '1341400789301697');
+    api.sendMessage('⚠ Reminder: https://instaling.pl/', botId);
+    ot.done();
+    return;
+})
+ontime({
+    cycle: '19:00:00'
+}, function (ot) {
+    api.sendMessage('⚠ Reminder: https://instaling.pl/', '100001810636246');
     ot.done();
     return;
 })
