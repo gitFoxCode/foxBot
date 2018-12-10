@@ -8,5 +8,5 @@ cd C:\Users\Lenovo\Desktop\foxBot
 echo ---------- Autor: FoxCode          ------------------
 echo ---------- Wersja: 0.1.5           ------------------
 echo -----------------------------------------------------
-node fixbot.js
+node newFoxBot.js
 pause

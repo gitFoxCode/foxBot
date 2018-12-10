@@ -50,5 +50,6 @@ function isEventer(userId){
 };
 
 module.exports.adminList = adminList;
+module.exports.eventerList = eventerList;
 module.exports.isAdmin = isAdmin;
 module.exports.isEventer = isEventer;
