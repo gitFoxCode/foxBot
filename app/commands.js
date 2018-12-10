@@ -1,5 +1,5 @@
 //const moment = require('moment'); // Time etc.
-const foxbot = require('../newFoxBot.js');
+const foxbot = require('../foxbot.js');
 const afox = require('../admins.js');
 const fs = require('fs'),
     ontime = require('ontime'), // onTime
