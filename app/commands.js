@@ -68,7 +68,7 @@ const commands = [
         syntax: false,
         desc: "wersja bota",
         func: (api, event, args) => {
-            api.sendMessage("foxBot v "+ version, event.threadID);
+            api.sendMessage("foxBot v "+ versionb, event.threadID);
         }
     },
 	{
