@@ -46,7 +46,7 @@ const commands = [
             let bodyMessage = "";
             bodyMessage += "##########################\n";
 
-            bodyMessage += `######## FoxBot v.${foxbot.version} #######\n`;
+            bodyMessage += `######## FoxBot v.${foxbot.versionb} #######\n`;
             bodyMessage += "########   KOMENDY   #######\n";
             commands.forEach((item,i)=>{
                 if(!commands[i]["hidden"]){

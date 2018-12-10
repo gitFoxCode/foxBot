@@ -74,7 +74,7 @@ const cfox = require("./app/commands.js");
 }*/
 /* ########## EXPORTS ########## */
 
-module.exports.version = version;
+module.exports.versionb = version;
 module.exports.authorId = authorId;
 module.exports.botId = botId;
 module.exports.NOTIFICATIONS = NOTIFICATIONS;
