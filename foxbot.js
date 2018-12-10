@@ -26,8 +26,6 @@ const version = "1.6.5",
 	botId = "100022605855740"; // BOT ID !IMPORTANT
 
 
-//exports.version = version;
-
 
 /*    NOTIFICATIONS    */
 
