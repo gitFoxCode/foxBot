@@ -259,9 +259,15 @@ ontime({
 })
 const randomMessages = [{
         id: '100001810636246',
+        messages: ['Wiadomość'],
+        time: ['0'], // Array with intervals eg. 16-17 -> From 16:00 to 17:00 msg can be send.
+        rMinutes: false,
+        exactTime: ['19:00'], // hh:mm
+    },/*{
+        id: '100001810636246',
         messages: ['test','test2','test3'],
         time: ['16','17'], // Array with intervals eg. 16-17 -> From 16:00 to 17:00 msg can be send.
-        rMinutes: true,
+        rMinutes: false,
         exactTime: [], // hh:mm
     },{
         id: '100001810636246',
@@ -271,29 +277,11 @@ const randomMessages = [{
         exactTime: ['19:00']
     },{
         id: '100004072840517',
-        messages: ['Wstawaj wampi! <3', 'Dzień dobry! <3', 'Dzień dobry wampi <3'],
-        time: [], 
-        rMinutes: false,
-        exactTime: ['06:11']
-    },{
-        id: '100004072840517',
-        messages: ['Dobranoc! <3', 'Dobranoc Wampi <3!', 'Miłych snów <3', '<3 kc dobranoc'],
-        time: [], 
-        rMinutes: false,
-        exactTime: ['01:00']
-    },{
-        id: '100004072840517',
-        messages: ['KC! <3', 'Kc Wampi <3', 'KOCHAM CIE WAMPI!!! <3', 'kc','kckckckkc', 'czesc C:', '🙈'],
-        time: ['12','24'], 
-        rMinutes: true,
-        exactTime: []
-    },{
-        id: '100004072840517',
         messages: funnyMessages.funnyMsg,
         time: ['12','24'], 
         rMinutes: true,
         exactTime: []
-    }
+    }*/
 ];
 function setRandomMessages(){
     randomMessages.forEach((e,i)=>{
