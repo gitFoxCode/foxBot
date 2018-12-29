@@ -249,6 +249,7 @@ api.sendMessage(`‼⏰⏰⏰⏰🔊📢📢📢🔔🔔🔔‼️
 // ######################################################################
 // ####################### PERSONAL MESSAGES ############################
 // ######################################################################
+/*
 ontime({
     cycle: `00:00:00`
 }, function (ot) {
@@ -256,7 +257,7 @@ ontime({
     setRandomMessages();
     ot.done();
     return;
-})
+});
 const randomMessages = [{
         id: '100001810636246',
         messages: ['Wiadomość'],
@@ -281,8 +282,9 @@ const randomMessages = [{
         time: ['12','24'], 
         rMinutes: true,
         exactTime: []
-    }*/
+    }
 ];
+
 function setRandomMessages(){
     randomMessages.forEach((e,i)=>{
         ontime({
@@ -296,7 +298,7 @@ function setRandomMessages(){
         });
     }); 
 }
-
+*/
 	// Addtons
 	var stopListening = api.listen(function(err, event) {
 		if (err){
