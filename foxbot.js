@@ -127,7 +127,7 @@ ontime({
     return;
 })*/
 ontime({
-    cycle: '24:00:00'
+    cycle: '2019-1-1 0:00:00'
 }, function (ot) {
     api.sendMessage(`❗❗🎇🎇🎇❗❗
 *WSZYSTKIEGO NAJLEPSZEGO!*
@@ -137,7 +137,7 @@ ontime({
     return;
 })
 ontime({
-    cycle: '24:00:00'
+    cycle: '2019-1-1 0:00:00'
 }, function (ot) {
     api.sendMessage(`❗❗🎇🎇🎇❗❗
 *WSZYSTKIEGO NAJLEPSZEGO!*
@@ -147,7 +147,7 @@ ontime({
     return;
 })
 ontime({
-    cycle: '24:00:00'
+    cycle: '2019-1-1 0:00:00'
 }, function (ot) {
     api.sendMessage(`❗❗🎇🎇🎇❗❗
 *WSZYSTKIEGO NAJLEPSZEGO!*
