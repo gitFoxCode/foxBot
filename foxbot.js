@@ -111,6 +111,7 @@ login({appState: JSON.parse(fs.readFileSync('appstate.json', 'utf8'))}, (err, ap
 // ########################## DAILY MESSAGES ############################
 // ######################################################################
 ////// REMINDER
+/*
 ontime({
     cycle: '17:00:00'
 }, function (ot) {
@@ -124,8 +125,37 @@ ontime({
     api.sendMessage('⚠ Reminder: https://instaling.pl/', '100001810636246');
     ot.done();
     return;
+})*/
+ontime({
+    cycle: '24:00:00'
+}, function (ot) {
+    api.sendMessage(`❗❗🎇🎇🎇❗❗
+*WSZYSTKIEGO NAJLEPSZEGO!*
+*W 2019*
+❗❗🎇🎇🎇❗❗`, '1404205732928620');
+    ot.done();
+    return;
 })
-
+ontime({
+    cycle: '24:00:00'
+}, function (ot) {
+    api.sendMessage(`❗❗🎇🎇🎇❗❗
+*WSZYSTKIEGO NAJLEPSZEGO!*
+*W 2019*
+❗❗🎇🎇🎇❗❗`, '625244260932803');
+    ot.done();
+    return;
+})
+ontime({
+    cycle: '24:00:00'
+}, function (ot) {
+    api.sendMessage(`❗❗🎇🎇🎇❗❗
+*WSZYSTKIEGO NAJLEPSZEGO!*
+*W 2019* <3 <3
+❗❗🎇🎇🎇❗❗`, '473427749508360');
+    ot.done();
+    return;
+})
 
 
 // Group TI: 1404205732928620
