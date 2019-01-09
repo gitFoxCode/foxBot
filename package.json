@@ -7,14 +7,16 @@
   "description": "",
   "main": "foxbot.js",
   "dependencies": {
-    "facebook-chat-api": "^1.5.1",
-    "mathjs": "^4.2.1",
     "cheerio": "^1.0.0-rc.2",
-    "request-promise": "^4.2.2",
+    "facebook-chat-api": "^1.5.1",
+    "jimp": "^0.6.0",
+    "mathjs": "^4.2.1",
+    "moment": "^2.22.2",
     "ontime": "0.0.4",
+    "request-promise": "^4.2.2",
     "rss-to-json": "^1.0.4",
     "weather-js": "^2.0.0",
-    "moment": "^2.22.2"
+    "jimp": "^0.6.0"
   },
   "devDependencies": {},
   "scripts": {

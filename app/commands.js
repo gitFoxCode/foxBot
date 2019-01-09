@@ -10,7 +10,8 @@ const fs = require('fs'),
     Feed = require('rss-to-json'), // RSS 
     mfox = require('../hello.js'),
     funnyMessages = require('../funnyMessages.js'),
-    moment = require('moment'); // Time etc.
+    moment = require('moment'), // Time etc.
+    Jimp = require("jimp");
 
 /*    GAMES SETTINGS   */
 
@@ -353,6 +354,86 @@ const commands = [
             } else{
                 api.sendMessage("Podaj poprawną liczbe z ktorej mam wylosować!", event.threadID);
             }
+        }
+    },
+    {
+        cmd: "imagetext",
+        groupAccess: false,
+        transform: false,
+        hidden: true,
+        syntax: "tekst1 tekst2",
+        desc: "tekst na obrazku",
+        func: (api, event, args) => {
+            let fileName = 'app/template.png';
+            let newFile = 'app/done.png';
+            let imageCaption = args;
+            let loadedImage;
+
+            Jimp.read(fileName)
+                .then(function (image) {
+                    loadedImage = image;
+                    return Jimp.loadFont(Jimp.FONT_SANS_32_WHITE);
+                })
+                .then(function (font) {
+                    loadedImage.print(font, 40, 40, imageCaption)
+                               .write(newFile);
+                    setTimeout(function(){ 
+                        let msg = {
+                            attachment: fs.createReadStream('app/done.png')
+                        }
+                        api.sendMessage(msg, event.threadID);
+                    }, 1000);
+
+
+                })
+                .catch(function (err) {
+                    console.error(err);
+                });
+
+        }
+    },
+    {
+        cmd: "memegenerator",
+        groupAccess: false,
+        transform: false,
+        hidden: true,
+        syntax: "tekst1",
+        desc: "tekst na obrazku",
+        func: (api, event, args) => {
+
+            let imageCaption = args.split(" ").slice(1).join(" ");
+            let loadedImage;
+            console.log(args);
+            console.log(args.split(" "));
+            console.log(args.split(" ").slice(1).join(" "));
+            if(args.split(" ")[0] == 'oldman' || args.split(" ")[0] == 'pikachu'){
+                let fileName = 'app/'+args.split(" ")[0]+'.png';
+                let newFile = 'app/'+args.split(" ")[0]+'_d.png';
+                Jimp.read(fileName)
+                    .then(function (image) {
+                        loadedImage = image;
+                        return Jimp.loadFont(Jimp.FONT_SANS_16_BLACK);
+                    })
+                    .then(function (font) {
+                        loadedImage.print(font, 10, 10, imageCaption,320)
+                                   .write(newFile);
+                        setTimeout(function(){ 
+                            let msg = {
+                                attachment: fs.createReadStream('app/'+args.split(" ")[0]+'_d.png')
+                            }
+                            api.sendMessage(msg, event.threadID);
+                        }, 1000);
+
+
+                    })
+                    .catch(function (err) {
+                        console.error(err);
+                    });
+            } else{
+                api.sendMessage("Brak template mema o nazwie " + args.split(" ")[0], event.threadID);
+            }
+           
+
         }
     },
     {
