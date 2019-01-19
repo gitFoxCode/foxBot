@@ -511,6 +511,21 @@ const commands = [
         }
     },
     {
+        cmd: "lottorandom",
+        groupAccess: false,
+        transform: false,
+        hidden: false,
+        syntax: false,
+        desc: "losowe numery lotto",
+        func: (api, event, args) => {
+                let returnNumbers = "";
+                let numbers = Array.from({length: 6}, () => Math.floor(Math.random() * 49));
+                numbers.forEach(number => returnNumbers += number + " " );
+                api.sendMessage("Jutrzejsze numery lotto: " + returnNumbers, event.threadID);
+           // api.sendMessage("Przepowiadam numer: " + randnumber, event.threadID);
+        }
+    },
+    {
     	// toFix: CMD ALIAS HERE!
         cmd: "wypierdalac",
         cmdAlias: "removeall",
