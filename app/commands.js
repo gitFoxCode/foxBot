@@ -519,7 +519,7 @@ const commands = [
         desc: "losowe numery lotto",
         func: (api, event, args) => {
                 let returnNumbers = "";
-                let numbers = Array.from({length: 6}, () => Math.floor(Math.random() * 49));
+                let numbers = Array.from({length: 6}, () => Math.floor(Math.random() * 48)+1);
                 numbers.forEach(number => returnNumbers += number + " " );
                 api.sendMessage("Jutrzejsze numery lotto: " + returnNumbers, event.threadID);
            // api.sendMessage("Przepowiadam numer: " + randnumber, event.threadID);
