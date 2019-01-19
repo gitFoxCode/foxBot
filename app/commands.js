@@ -481,6 +481,36 @@ const commands = [
         }
     },
     {
+        cmd: "lotto",
+        groupAccess: false,
+        transform: false,
+        hidden: false,
+        syntax: false,
+        desc: "numery lotto z dzisiaj",
+        func: (api, event, args) => {
+                let roptions = {
+                  uri: `https://app.lotto.pl/wyniki/?type=dl`,
+                  transform: function (body) {
+                    return cheerio.load(body);
+                  }
+                };
+
+                rp(roptions)
+                  .then(($) => {
+                    let returnNumbers = "";
+                    let numbers = $('body').text().split("\n");
+                    numbers.shift();
+                    numbers.pop();
+                    numbers.forEach(number => returnNumbers += number + " " );
+                    api.sendMessage("Dzisiejsze numery lotto: " + returnNumbers, event.threadID);
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                  });
+           // api.sendMessage("Przepowiadam numer: " + randnumber, event.threadID);
+        }
+    },
+    {
     	// toFix: CMD ALIAS HERE!
         cmd: "wypierdalac",
         cmdAlias: "removeall",
