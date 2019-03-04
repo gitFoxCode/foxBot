@@ -111,21 +111,16 @@ login({appState: JSON.parse(fs.readFileSync('appstate.json', 'utf8'))}, (err, ap
 // ########################## DAILY MESSAGES ############################
 // ######################################################################
 ////// REMINDER
-/*
+
 ontime({
-    cycle: '17:00:00'
+    cycle: '18:00:00'
 }, function (ot) {
     api.sendMessage('⚠ Reminder: https://instaling.pl/', '1341400789301697');
     ot.done();
     return;
-})
-ontime({
-    cycle: '19:00:00'
-}, function (ot) {
-    api.sendMessage('⚠ Reminder: https://instaling.pl/', '100001810636246');
-    ot.done();
-    return;
-})*/
+});
+
+
 ontime({
     cycle: '2019-1-1 0:00:00'
 }, function (ot) {
