@@ -1,6 +1,6 @@
 {
   "name": "foxBot",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "engines": {
     "node": "8.9.4"
   },
@@ -8,15 +8,14 @@
   "main": "foxbot.js",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
-    "facebook-chat-api": "^1.5.1",
-    "jimp": "^0.6.0",
-    "mathjs": "^4.2.1",
-    "moment": "^2.22.2",
-    "ontime": "0.0.4",
-    "request-promise": "^4.2.2",
+    "facebook-chat-api": "^1.6.1",
+    "jimp": "^0.6.4",
+    "mathjs": "^5.10.3",
+    "moment": "^2.24.0",
+    "ontime": "0.0.6",
+    "request-promise": "^4.2.4",
     "rss-to-json": "^1.0.4",
-    "weather-js": "^2.0.0",
-    "jimp": "^0.6.0"
+    "weather-js": "^2.0.0"
   },
   "devDependencies": {},
   "scripts": {

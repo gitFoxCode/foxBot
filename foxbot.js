@@ -8,6 +8,12 @@ Host: Heroku
 Motive: Learning/Fun
 **************************************/
 
+/*************************************
+TO DO list:
+- NOTIFICATIONS command (arrays,ontime,groups)
+
+*************************************/
+
 const login = require("facebook-chat-api"),
 	fs = require('fs'),
 	ontime = require('ontime'), // onTime
@@ -17,32 +23,12 @@ const login = require("facebook-chat-api"),
     foxMath = require('mathjs'), // Calc
     Feed = require('rss-to-json'), // RSS 
 	afox = require('./admins.js'),
-    mfox = require('./hello.js'),
-    funnyMessages = require('./funnyMessages.js'),
     moment = require('moment'); // Time etc.
 	//mi = require('./milionerzy.js'),
-const version = "1.6.5",
+
+const version = "1.7.0",
     authorId = "100001810636246",
 	botId = "100022605855740"; // BOT ID !IMPORTANT
-
-
-
-/*    NOTIFICATIONS    */
-
-const NOTIFICATIONS = [
-    {
-        group: 1,
-        time: 123,
-        text: "dupa"
-    },
-    {
-        group: 2,
-        time: 123,
-        text: "dupa"
-    }
-];
-
-/* - - - - - - - - - - */
 
 
 /*      MILIONERZY     */
@@ -55,7 +41,7 @@ var useChar = "/";
 var spokoj = true,
 	ai = false;
 
-/* SETTINGS */
+/* SETTINGS - CALC (Mathjs) */
 
 foxMath.import({
   'import':     function () { throw new Error('Import - Disabled') },
@@ -65,19 +51,15 @@ foxMath.import({
 }, {override: true});
 
 /*          */
+
 const cfox = require("./app/commands.js");
-/*module.exports = {
-   version,
-   authorId,
-   botId,
-   NOTIFICATIONS
-}*/
+
 /* ########## EXPORTS ########## */
 
 module.exports.versionb = version;
 module.exports.authorId = authorId;
 module.exports.botId = botId;
-module.exports.NOTIFICATIONS = NOTIFICATIONS;
+//module.exports.NOTIFICATIONS = NOTIFICATIONS;
 module.exports.useChar = useChar;
 
 /* ############################## */
@@ -195,8 +177,6 @@ switch(todayis) {
         console.log("Day error.");
 }
 
-
-let todayRandNumber = Math.floor(Math.random() * mfox.helloList.length);
 
  let roptions = {
                   uri: `https://www.kalendarzswiat.pl/dzisiaj`,
@@ -446,7 +426,7 @@ if(event.body.toLowerCase() == '/mi gotowy') {
                     `\nAby powtórzyć pytanie wpisz /mi repeat`+
                     `\nAby zrezygnowac wpisz /mi leave`+
                     `\nPowodzenia!`, event.threadID);
-                    setTimeout(function(){ getQuestion(0); }, 2000);
+                    setTimeout(()=>{ getQuestion(0); }, 2000);
             }else{
                 api.sendMessage("*[ MILIONERZY ]*"+
                     `\nNie jesteś graczem w lobby!`, event.threadID);
@@ -472,7 +452,7 @@ if(event.body.toLowerCase() == '/mi join') {
                         console.log("Milionerzy ERROR: "+ err);
                     }
                     for(let prop in ret) {
-                        pSkontaklayer.name = ret[prop].name;
+                        player.name = ret[prop].name;
                     }
                 });
                 // ToFix: Change setTimeout to promise;
@@ -515,7 +495,7 @@ if(event.body.toLowerCase() == '/mi a' || event.body.toLowerCase() == '/mi b' ||
                 let ansSplit = ansInput.split(' ');
                 let ansArgs = ansInput.slice(ansSplit[0].length + 1);
                 let ansArg = ansArgs.split(' ')[0];
-                console.log("Przesylam: "+ shuffledAnswers);
+
                 playerAnswer(shuffledAnswers, ansArg);
             }else{
                 api.sendMessage("*[ MILIONERZY ]*"+
@@ -934,7 +914,7 @@ function getQuestion(nr){
     }
  }
 }
-//debul
+//debug
 function changeQuestionHelp(arr){
     let search_term = 'Zmień pytanie';
 
@@ -1079,5 +1059,5 @@ var shuffledAnswers = [];
 var answering = false;
 
 ///quest 
-const mData = require("./app/milionare_data.js");
+const mData = require("./app/m_game_questions.js");
 

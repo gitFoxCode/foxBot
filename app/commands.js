@@ -8,8 +8,6 @@ const fs = require('fs'),
     cheerio = require('cheerio'), // jQuery (DOM)
     foxMath = require('mathjs'), // Calc
     Feed = require('rss-to-json'), // RSS 
-    mfox = require('../hello.js'),
-    funnyMessages = require('../funnyMessages.js'),
     moment = require('moment'), // Time etc.
     Jimp = require("jimp");
 
@@ -47,7 +45,7 @@ const commands = [
             let bodyMessage = "";
             bodyMessage += "##########################\n";
 
-            bodyMessage += `######## FoxBot v.${foxbot.versionb} #######\n`;
+            bodyMessage += `######## FoxBot v.${foxbot.version} #######\n`;
             bodyMessage += "########   KOMENDY   #######\n";
             commands.forEach((item,i)=>{
                 if(!commands[i]["hidden"]){
@@ -69,7 +67,7 @@ const commands = [
         syntax: false,
         desc: "wersja bota",
         func: (api, event, args) => {
-            api.sendMessage("foxBot v "+ foxbot.versionb, event.threadID);
+            api.sendMessage("foxBot v "+ foxbot.version, event.threadID);
         }
     },
 	{
@@ -434,18 +432,6 @@ const commands = [
             }
            
 
-        }
-    },
-    {
-        cmd: "testuje",
-        groupAccess: false,
-        transform: false,
-        hidden: true,
-        syntax: false,
-        desc: "wyswietla losowy numer",
-        func: (api, event, args) => {
-            let randnumber = Math.floor(Math.random() * mfox.helloList.length);
-            api.sendMessage(mfox.helloList[randnumber], event.threadID);
         }
     },
     {
