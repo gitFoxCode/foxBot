@@ -94,7 +94,6 @@ const commands = [
 		}
 	},
 	{
-		// toFix : Sprawdzić na czym polega (usunieta jedna linijka kodu)
 		cmd: "test",
 		groupAccess: false,
 		transform: false,
@@ -102,9 +101,7 @@ const commands = [
 		syntax: " [--parameter]",
 		desc: "Komenda do testowania",
 		func: (api, event, args) => {
-			//api.sendMessage("Args:" + "\n" + args, event.threadID);
-            api.sendMessage("*[ TEST ]*"+
-                `\nPan test.`, event.threadID);
+			api.sendMessage("Test:" + "\n" + args, event.threadID);
         }
     },
     {
@@ -226,7 +223,6 @@ const commands = [
         }
     },
     {
-    	// Wypisywanie tekstu toFix sprawdzic dzialanie
         cmd: "echo",
 		groupAccess: false,
 		transform: false,
@@ -822,23 +818,22 @@ const commands = [
         }
     },
     {
-        cmd: "adminList", //ToFix TODEVELOP
+        cmd: "adminlist",
 		groupAccess: false,
 		transform: false,
 		hidden: false,
         syntax: false,
         desc: "lista adminow",
         func: (api, event, args) => {
-            console.log("Hello!");
             let bodyMessage = "###### foxBot Admins ######\n";
             afox.adminList.forEach((item,i)=>{
                 bodyMessage += `- ${afox.adminList[i]["name"]} (${afox.adminList[i]["rank"]})\n`;
             });
-            afox.adminList.forEach((item,i)=>{
+            afox.eventerList.forEach((item,i)=>{
                 bodyMessage += `- ${afox.eventerList[i]["name"]} (${afox.eventerList[i]["rank"]})\n`;
             });
             api.sendMessage(bodyMessage, event.threadID);
-            console.log('eee');
+
         }
     },
     {
@@ -854,7 +849,7 @@ const commands = [
         }
     },
      {
-        cmd: "time", //ToFix TODEVELOP
+        cmd: "time",
         groupAccess: false,
         transform: false,
         hidden: false,
@@ -865,6 +860,21 @@ const commands = [
                 let h = date.getHours();
                 let m = date.getMinutes();
                 api.sendMessage("Czas serwera: " + h + ":" + m, event.threadID);
+        }
+    },
+     {
+        cmd: "checkdaily",
+        groupAccess: false,
+        transform: false,
+        hidden: true,
+        syntax: false,
+        desc: "sprawdza aktywne codzienne powiadomienia",
+        func: (api, event, args) => {
+                //** There will be that feature **//
+
+                // Concept:
+                // ifAdmin -> list of daily messages
+                // ON/OFF daily message 
         }
     },
     {
