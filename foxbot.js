@@ -94,13 +94,13 @@ login({appState: JSON.parse(fs.readFileSync('appstate.json', 'utf8'))}, (err, ap
 // ######################################################################
 ////// REMINDER
 
-ontime({
-    cycle: '18:00:00'
-}, function (ot) {
-    api.sendMessage('⚠ Reminder: https://instaling.pl/', '1341400789301697');
-    ot.done();
-    return;
-});
+// ontime({
+//     cycle: '18:00:00'
+// }, function (ot) {
+//     api.sendMessage('⚠ Reminder: https://instaling.pl/', '1341400789301697');
+//     ot.done();
+//     return;
+// });
 
 
 ontime({
