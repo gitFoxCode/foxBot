@@ -11,7 +11,7 @@
     "facebook-chat-api": "^1.6.1",
     "jimp": "^0.6.4",
     "mathjs": "^5.10.3",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "ontime": "0.0.6",
     "request-promise": "^4.2.4",
     "rss-to-json": "^1.0.4",
